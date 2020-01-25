@@ -11,38 +11,22 @@ using namespace std;
 
 class Pion : public Unite {
 
- protected :
-        int prix;
-	int pointVie;
-	int pointAttaque;
-	int portee;
-	//int posCase;
+protected :
+    int prix;
+    int pointVie;
+    int pointAttaque;
+    int portee;
+    //int posCase;
 
- public :
+public :
+    Pion();
+    ~Pion();
 
-Pion();
-
-~Pion();
-
-void setPointVie(int pv);
-
-int getPointVie();
-
-void setPos(int posC);
-
-int getPos();
-
-int getPointAttaque();
-
-virtual void avancer(bool droite);
-
-virtual void attaque(Pion p);
-
-int getPortee();
-
-virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
-
-
+    int getPointAttaque();
+    virtual void avancer(bool droite);
+    virtual void attaque(Pion p);
+    int getPortee();
+    virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };
 
 #endif

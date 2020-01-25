@@ -8,12 +8,9 @@ using namespace std;
 
 class Catapulte : public Pion {
 
- public :
-
-Catapulte();
-
-~Catapulte();
-void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
-
+public :
+    Catapulte();
+    ~Catapulte();
+    void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };
 #endif

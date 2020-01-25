@@ -5,17 +5,13 @@
 
 using namespace std;
 
-Archer::Archer()
-	{
-		prix = 12;
-		pointVie = 7;
-		pointAttaque = 3;
-		portee = 3;
-        }
+Archer::Archer(){
+    prix = 12;
+    pointVie = 7;
+    pointAttaque = 3;
+    portee = 3;
+}
 
-Archer::~Archer()
-        {
-
-        }
+Archer::~Archer(){}
 
 void Archer::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite){std::cout<<"SALUT";}

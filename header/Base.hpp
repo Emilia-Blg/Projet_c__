@@ -8,20 +8,13 @@ using namespace std;
 
 class Base : public Unite {
 
- private :
-
+    private :
 	//int pointVie;
 	//int posCase;
-        
 
- public :
-
-        Base();
-
-        ~Base();
-        
-
-
+    public :
+    Base();
+    ~Base();
 };
 
 #endif

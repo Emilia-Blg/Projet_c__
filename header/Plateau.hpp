@@ -8,17 +8,14 @@
 using namespace std;
 
 class Plateau{
-	private:
-		Unite tab[12];
-	public:
+private:
+    Unite tab[12];
 
-		Plateau();
+public:
+    Plateau();
+    ~Plateau();
 
-		~Plateau();
-
-		void placer(Unite u, int position);
-
-		Unite getTab(int index);
-				
+    void placer(Unite u, int position);
+    Unite getTab(int index);
 };
 #endif
