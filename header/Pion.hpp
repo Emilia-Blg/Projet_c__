@@ -24,7 +24,7 @@ public :
     virtual string affiche()=0;
     int getPointAttaque();
     virtual void avancer(bool droite);
-    void attaque(Pion* p);
+    virtual void attaque(Pion *p);
     int getPortee();
     virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };

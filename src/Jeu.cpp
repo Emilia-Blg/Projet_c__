@@ -40,7 +40,7 @@ static int i=0;
 vector<Pion*> TriProche(vector<Pion*> listEquip){
     vector<Pion*> res;
     int taille = listEquip.size();
-    Pion* first = nullptr  ;
+    Pion* first = nullptr;
     for (int i=0; i<taille; i++) {
         for (Pion* p : listEquip) {
             first = listEquip.front();
@@ -343,6 +343,8 @@ action3(j2,j1);
 		for(int y=0; y < j2.getListeEquipe().size(); y++){
             cout << "J2 enregistre perso " << j2.getListeEquipe()[y]->affiche() << endl;
         }
+
+		plateau.affiche();
 
 
 /*------------------Quand tout fonctionne----------------------- */

@@ -9,7 +9,7 @@ using namespace std;
 
 class Plateau{
 private:
-    Unite tab[12];
+    vector<Unite*> tab;
 
 public:
     Plateau();
@@ -19,5 +19,6 @@ public:
     Unite getTab(int index);
     void viderCase(int index);
 
-    };
+    void affiche();
+};
 #endif

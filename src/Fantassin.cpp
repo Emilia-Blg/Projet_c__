@@ -35,13 +35,14 @@ void Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué";
                     allie.push_back(new SuperSoldat(*this));
+                    allie.erase(allie.end());
                     ennemi.erase(it);
                 }
                 atq=true;
             }
             it++;
         }
-        if ((droite&&(ennemi.empty())&&(posCase+portee >= 12)&&!atq)){ //12 à voir
+        if ((ennemi.empty())&&(posCase+portee >= 12)&&!atq){ //12 à voir
             B.setPointVie(B.getPointVie()-pointAttaque);
             atq=true;
         }
@@ -60,7 +61,7 @@ void Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
             }
             it++;
         }
-        if (!droite&&(ennemi.empty())&&(posCase-portee >= 1)&&!atq){ //1 à voir
+        if ((ennemi.empty())&&(posCase-portee >= 1)&&!atq){ //1 à voir
             B.setPointVie(B.getPointVie()-pointAttaque);
             atq=true;
         }

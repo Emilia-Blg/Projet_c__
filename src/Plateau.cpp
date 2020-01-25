@@ -1,12 +1,16 @@
 #include <iostream>
 #include <cstdlib>
 #include "../header/Plateau.hpp"
+#include "../header/Pion.hpp"
 
 
 using namespace std;
 
 Plateau::Plateau(){
-    vector<Unite*> tab(12);
+    tab = vector<Unite*>(12);
+    for(Unite* unit : tab) {
+        unit = nullptr;
+    }
 }
 
 Plateau::~Plateau(){}
@@ -17,12 +21,25 @@ void Plateau::placer(Unite& u, int index){
     if()
 
 
-    tab[index];
+        tab[index] = u;
 }
 
 //getter de tab
 Unite Plateau::getTab(int index){
-    return tab[index];
+    return *tab[index];
+}
+
+void Plateau::affiche(){
+    cout<<endl<<"-----------------------------------------------"<<endl<<"Plateau"<<endl;
+    cout<<"A ";
+    string pions = "";
+    for(int cpt=1; cpt<11; cpt++) { //Boucle de 1 a 11 pour enlever les bases qui ne sont pas des pions
+        if(tab[cpt] != nullptr) {
+            Pion *p = (Pion *) tab[cpt];
+            pions += p->affiche();
+        }
+        cout<<pions<<" B"<<endl;
+    }
 }
 
 void Plateau::viderCase(int index){
