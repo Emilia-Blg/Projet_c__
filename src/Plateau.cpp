@@ -30,18 +30,18 @@ Unite Plateau::getTab(int index){
 }
 
 void Plateau::affiche(){
-    cout<<endl<<"-----------------------------------------------"<<endl<<"Plateau"<<endl;
-    cout<<"A |";
+    cout<<endl<<"---------------------------------------------------------"<<endl<<"Plateau"<<endl;
+    cout<<"Base A |";
     string pions = "";
     for(int cpt=1; cpt<11; cpt++) { //Boucle de 1 a 11 pour enlever les bases qui ne sont pas des pions
         if(tab[cpt] != nullptr) {
             Pion *p = (Pion *) tab[cpt];
             pions += p->affiche();
         } else
-            pions += "  ";
+            pions += "   ";
         pions += "|";
     }
-    cout<<pions<<" B"<<endl;
+    cout<<pions<<" Base B"<<endl<<"---------------------------------------------------------"<<endl<<endl;
 }
 
 void Plateau::viderCase(int index){
