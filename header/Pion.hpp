@@ -34,6 +34,8 @@ int getPos();
 
 int getPointAttaque();
 
+virtual string affiche()=0;
+
 virtual void avancer(bool droite);
 
 virtual void attaque(Pion p);
