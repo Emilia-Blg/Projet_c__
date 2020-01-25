@@ -15,7 +15,7 @@ Archer::Archer(){
 Archer::~Archer(){}
 
 string Archer::affiche(){
-    return " Archer ";
+    return " A ";
 }
 
 void Archer::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite){std::cout<<"SALUT";}

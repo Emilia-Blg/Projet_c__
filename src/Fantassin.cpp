@@ -18,7 +18,7 @@ Fantassin::Fantassin(){
 Fantassin::~Fantassin(){}
 
 string Fantassin::affiche(){
-    return " Fantassin ";
+    return " F ";
 }
 
 void Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B){
@@ -31,7 +31,7 @@ void Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
         for (Pion* p : ennemi){
             vector<Pion*>::iterator it=ennemi.begin();
             if (((portee)>=(p->getPos()-posCase))&&(atq==false)){
-                this->attaque(*p);
+                this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué";
                     allie.push_back(new SuperSoldat(*this));
@@ -50,7 +50,7 @@ void Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (((portee)>=(posCase-p->getPos()))&&(atq==false)){
-                this->attaque(*p);
+                this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué";
                     allie.push_back(new SuperSoldat(*this));

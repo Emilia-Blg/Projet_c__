@@ -318,7 +318,7 @@ action3(j1,j2);
 
 //TOUR DE JEU J2
         tour =2;
-        action1(j2,j1);
+        //action1(j2,j1);
 /*
 action2(j2,j1);
 action3(j2,j1);
@@ -330,14 +330,14 @@ action3(j2,j1);
 
         if (b) {
             Pion* pionAchete = achat();
-            pionAchete->setPos(12);
+            pionAchete->setPos(10);
             j2.add(pionAchete);
-            plateau.placer(*pionAchete,12);
+            plateau.placer(*pionAchete,10);
             b =false;
         }
 
-		for(int y=0; y < j1.getListeEquipe().size(); y++){
-            cout << "J2 enregistre perso " << j1.getListeEquipe()[y]->affiche() << endl;
+		for(int y=0; y < j2.getListeEquipe().size(); y++){
+            cout << "J2 enregistre perso " << j2.getListeEquipe()[y]->affiche() << endl;
         }
 
 
@@ -345,6 +345,13 @@ action3(j2,j1);
 //Si commande de sauvegarde, stopper le jeu
 //Si commande de chargement, reprendre le jeu dans la boucle
 /* ----------------------------------------- */
+
+
+        if(b1.getPointVie() == 0){
+            cout << " Joueur 2 à gagner !!!! " << endl;
+        }else if(b2.getPointVie() == 0){
+            cout << " Joueur 1 à gagner !!!! " << endl;
+        }
 
 
         nbTour+=1;

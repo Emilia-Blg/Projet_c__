@@ -14,7 +14,7 @@ SuperSoldat::~SuperSoldat(){
 }
 
 string SuperSoldat::affiche(){
-    return " SuperSoldat ";
+    return " SS ";
 }
 
 void SuperSoldat::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite){std::cout<<"SALUT";}
