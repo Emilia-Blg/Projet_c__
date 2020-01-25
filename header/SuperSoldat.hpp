@@ -11,6 +11,7 @@ class SuperSoldat : public Pion {
 public :
     SuperSoldat(Fantassin f);
     ~SuperSoldat();
+    string affiche();
     virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };
 #endif

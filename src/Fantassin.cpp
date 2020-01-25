@@ -17,6 +17,10 @@ Fantassin::Fantassin(){
 
 Fantassin::~Fantassin(){}
 
+string Fantassin::affiche(){
+    return " Fantassin ";
+}
+
 void Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B){
     cout<<"ACTION FANTASSIN"<<endl;
     bool tue = false;

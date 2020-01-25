@@ -12,5 +12,10 @@ SuperSoldat::SuperSoldat(Fantassin f){
 SuperSoldat::~SuperSoldat(){
     //delete[] pointVie;
 }
+
+string SuperSoldat::affiche(){
+    return " SuperSoldat ";
+}
+
 void SuperSoldat::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite){std::cout<<"SALUT";}
 

@@ -17,6 +17,7 @@ public :
 
     Fantassin();
     ~Fantassin();
+    string affiche();
     void action1(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B);
     void action2(std::vector<Pion*> allie,std::vector<Pion*> ennemi, bool droite);
     void action3(std::vector<Pion*> allie,std::vector<Pion*> ennemi, bool droite);

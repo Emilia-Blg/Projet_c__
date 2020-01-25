@@ -11,6 +11,9 @@ class Archer : public Pion{
 public :
     Archer();
     ~Archer();
+
+    string affiche();
+
     void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };
 #endif

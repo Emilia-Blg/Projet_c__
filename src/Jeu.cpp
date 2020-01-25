@@ -310,7 +310,7 @@ action3(j1,j2);
 		}
 
         for(int y=0; y < j1.getListeEquipe().size(); y++){
-            cout << "J1 enregistre perso " << j1.getListeEquipe()[y] << endl;
+            cout << "J1 enregistre perso " << j1.getListeEquipe()[y]->affiche() << endl;
         }
 
 	    cout << "nbTour : " << nbTour << endl;
@@ -337,7 +337,7 @@ action3(j2,j1);
         }
 
 		for(int y=0; y < j1.getListeEquipe().size(); y++){
-            cout << "J2 enregistre perso " << j1.getListeEquipe()[y] << endl;
+            cout << "J2 enregistre perso " << j1.getListeEquipe()[y]->affiche() << endl;
         }
 
 

@@ -11,6 +11,8 @@ class Catapulte : public Pion {
 public :
     Catapulte();
     ~Catapulte();
+
+    string affiche();
     void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };
 #endif

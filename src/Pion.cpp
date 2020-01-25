@@ -17,8 +17,8 @@ void Pion::avancer(bool droite){
     else{setPos(this->getPos() -1);}
 }
 
- void Pion::attaque(Pion p){
-    p.setPointVie(p.getPointVie() - (this->getPointAttaque()));
+void Pion::attaque(Pion* p){
+    p->setPointVie(p->getPointVie() - (this->getPointAttaque()));
 }
 
 int Pion :: getPortee(){
