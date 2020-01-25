@@ -4,11 +4,11 @@
 
 using namespace std;
 
-Base::Base()
-{}
+Base::Base(){}
 
-Base::~Base()
-{}
+Base::~Base(){}
+
+
 
 
 

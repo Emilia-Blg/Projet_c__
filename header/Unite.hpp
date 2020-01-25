@@ -12,19 +12,12 @@ class Unite {
 	int posCase;
 
  public :
-
-        Unite();
-
-        ~Unite();
+    Unite();
+    ~Unite();
 
 	virtual void setPointVie(int pv);
-
 	int getPointVie();
-        
 	virtual void setPos(int posC);
-
 	int getPos();
-
-
 };
 #endif

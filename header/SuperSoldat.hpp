@@ -8,13 +8,9 @@ using namespace std;
 
 class SuperSoldat : public Pion {
 
- public :
-
-SuperSoldat(Fantassin f);
-
-~SuperSoldat();
-virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
-
-
+public :
+    SuperSoldat(Fantassin f);
+    ~SuperSoldat();
+    virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
 };
 #endif

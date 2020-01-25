@@ -6,19 +6,15 @@
 using namespace std;
 
 Plateau::Plateau(){
-	tab[12];
+    tab[12];
 }
 
 Plateau::~Plateau(){}
 
 void Plateau::placer(Unite u, int index){
-	
-	tab[index]=u;
-
+    tab[index]=u;
 }
 
 Unite Plateau::getTab(int index){
-
-	return tab[index];
-
+    return tab[index];
 }
