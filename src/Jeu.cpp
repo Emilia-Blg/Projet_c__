@@ -16,11 +16,15 @@
 //TODO dans plateau : (dans la fonction placer) attention qu'elle get pas sur une case pleine
 //TODO dans plateau : fonction pour vider case
 
-//TODO dans joueur : les fonctions action prennent en paramètre mon plateau + dettecter le pion le plus avancer pour le faire jouer en premier puis décrémente/incrémente + faire son action (déplacer/attaquer) 
+//TODO dans joueur : les fonctions action prennent en paramètre mon plateau
+// + dettecter le pion le plus avancer pour le faire jouer en premier puis décrémente/incrémente
+// + faire son action (déplacer/attaquer)
 //TODO dans chaque pion : redéfinir les actions
 
 //TODO assigner point de dégat 
-//TODO qui meurt 
+//TODO qui meurt
+
+//done
 //TODO qui gagne !!
 
 //ATTENTION J1 et J2 pas pareil en terme de sens 
@@ -344,7 +348,7 @@ action3(j2,j1);
 /*------------------Quand tout fonctionne----------------------- */
 //Si commande de sauvegarde, stopper le jeu
 //Si commande de chargement, reprendre le jeu dans la boucle
-/* ----------------------------------------- */
+/* ------------------------------------------------------------- */
 
 
         if(b1.getPointVie() == 0){
