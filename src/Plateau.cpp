@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "Plateau.hpp"
+#include "../header/Plateau.hpp"
 
 
 using namespace std;

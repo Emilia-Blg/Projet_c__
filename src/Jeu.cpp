@@ -1,13 +1,13 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "Archer.hpp"
-#include "Fantassin.hpp"
-#include "SuperSoldat.hpp"
-#include "Catapulte.hpp"
-#include "Joueur.hpp"
-#include "Plateau.hpp"
-#include "Base.hpp"
+#include "../header/Archer.hpp"
+#include "../header/Fantassin.hpp"
+#include "../header/SuperSoldat.hpp"
+#include "../header/Catapulte.hpp"
+#include "../header/Joueur.hpp"
+#include "../header/Plateau.hpp"
+#include "../header/Base.hpp"
 #include <vector>
 #include <iterator>
 #include <algorithm>

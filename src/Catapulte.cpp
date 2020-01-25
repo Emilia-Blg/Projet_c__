@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Catapulte.hpp"
-#include "Pion.hpp"
+#include "../header/Catapulte.hpp"
+#include "../header/Pion.hpp"
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 #include <set>
 #include <vector>
 #include <algorithm>
-#include "Joueur.hpp"
+#include "../header/Joueur.hpp"
 
 using namespace std;
    

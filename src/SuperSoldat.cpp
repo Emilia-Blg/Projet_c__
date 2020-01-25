@@ -1,6 +1,6 @@
 #include <iostream>
-#include "SuperSoldat.hpp"
-#include "Fantassin.hpp"
+#include "../header/SuperSoldat.hpp"
+#include "../header/Fantassin.hpp"
 
 using namespace std;
 

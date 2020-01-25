@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Fantassin.hpp"
-#include "Pion.hpp"
-#include "Base.hpp"
-#include "SuperSoldat.hpp"
+#include "../header/Fantassin.hpp"
+#include "../header/Pion.hpp"
+#include "../header/Base.hpp"
+#include "../header/SuperSoldat.hpp"
 
 using namespace std;
 

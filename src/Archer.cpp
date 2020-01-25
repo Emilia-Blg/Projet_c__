@@ -1,6 +1,6 @@
 #include <iostream>
-#include "Archer.hpp"
-#include "Pion.hpp"
+#include "../header/Archer.hpp"
+#include "../header/Pion.hpp"
 #include <cstdlib>
 
 using namespace std;
