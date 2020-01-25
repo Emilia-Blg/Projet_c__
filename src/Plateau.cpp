@@ -20,8 +20,7 @@ void Plateau::placer(Unite& u, int index){
     //TODO dans plateau : (dans la fonction placer) attention qu'elle set pas sur une case pleine
     if()
 
-
-        tab[index] = u;
+    tab[index]=u;
 }
 
 //getter de tab
