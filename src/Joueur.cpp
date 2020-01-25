@@ -14,6 +14,9 @@ Joueur::Joueur(){
 	po=0;
 }
 
+Joueur::~Joueur(){}
+
+
 void Joueur::setPV(int ppv){
         pv=ppv;
 }

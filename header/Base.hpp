@@ -19,14 +19,6 @@ class Base : public Unite {
         Base();
 
         ~Base();
-
-	void setPointVie(int pv);
-
-	int getPointVie();
-	
-	void setPos(int posC);
-
-	int getPos();
         
 
 

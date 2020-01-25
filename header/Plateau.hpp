@@ -9,7 +9,7 @@ using namespace std;
 
 class Plateau{
 	private:
-		Unite tab[14];
+		Unite tab[12];
 	public:
 
 		Plateau();

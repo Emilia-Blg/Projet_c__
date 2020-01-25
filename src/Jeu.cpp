@@ -12,11 +12,10 @@
 #include <iterator>
 #include <algorithm>
 
-//TODO faire ces putain de hpp de merde psk l'autre connard sait pas coder en 4eme année d'info bordel
-//TODO dans plateau : getter dans plateau
 
 //TODO dans plateau : (dans la fonction placer) attention qu'elle get pas sur une case pleine
-//TODO dans plateau : fonction pour vider case 
+//TODO dans plateau : fonction pour vider case
+
 //TODO dans joueur : les fonctions action prennent en paramètre mon plateau + dettecter le pion le plus avancer pour le faire jouer en premier puis décrémente/incrémente + faire son action (déplacer/attaquer) 
 //TODO dans chaque pion : redéfinir les actions
 
@@ -263,7 +262,7 @@ void action3(Joueur j1, Joueur j2){
 
 
 //LANCEMENT DU JEU
-    	cout<<"____________________________________________________________________"<< endl <<"____________________________________________________________________"<< endl<<"____________________________________________________________________"<< endl;
+    	cout<<"____________________________________________________________________"<< endl <<"____________________________________________________________________"<< endl<<"____________________________________________________________________\n\n"<< endl;
     
 
 //--Mode de jeu J1 vs J2
@@ -272,31 +271,37 @@ void action3(Joueur j1, Joueur j2){
 int nbTour=1;
 
 //Création des 2 joueurs j1 et j2
-
 Joueur j1; 
 j1.setPV(100);
 j1.setPO(0);
-Joueur &jj1=j1;
+//Joueur &jj1=j1;
 
 Joueur j2;
 j2.setPV(100);
 j2.setPO(0);
-Joueur &jj2=j2;
+//Joueur &jj2=j2;
 
 //Création du plateau
-
 Plateau plateau = Plateau();
 
-//Création des unités t0 : la base -
-
+//Création des unités t0 : la base
 Base b1; //on met les bases hors de la liste des unités
 Base b2;
 
-//Placement des unités t0
-b1.setPos(1); //Champ-position à zero
+//Placement des unités t0 (by Fabien)
+/*b1.setPos(1); //Champ-position à zero
 plateau.placer(b1,0);//Placement de b1
 b2.setPos(12);
-plateau.placer(b2,13);//Placement de b2
+plateau.placer(b2,13);//Placement de b2*/
+
+//placer les unités by Emilia
+     b1.setPos(0); //Champ-position à zero
+     plateau.placer(b1,0);//Placement de b1
+     b2.setPos(11);
+     plateau.placer(b2,11);//Placement de b2
+
+     cout << "base 1 : " << b1.getPos() << endl;
+     cout << "base 2 : " << b2.getPos() << endl;
 
 //Boucle de jeu (Tant que nbTour<TOURMAX && j1.nbPV>0 && j2.nbPV >0)
 
@@ -320,7 +325,7 @@ action3(j1,j2);
 
 //PERIODE D'ACHATS
 		cout << "\n\n\n\n\t Joueur 1"<<  " \n"<< endl;
-		bool a = menu(jj1); 
+		bool a = menu(j1);
 
 		if (a) {
 			Pion* pionAchete = achat(); 
@@ -329,8 +334,12 @@ action3(j1,j2);
 			plateau.placer(*pionAchete,1);
 			a =false;
 		}
-	
-	cout << "J1 enregistre perso"<< endl;
+
+    for(int y=0; y < j1.getListeEquipe().size(); y++){
+        cout << "J1 enregistre perso " << j1.getListeEquipe()[y] << endl;
+    }
+
+
 	cout << "nbTour : " << nbTour << endl;
 
 
@@ -344,7 +353,7 @@ action3(j2,j1);
 
 //PERIODE D'ACHATS
 		cout << "\n\n\n\n\t Joueur 2"<<  " \n"<< endl;
-		bool b = menu(jj2); 
+		bool b = menu(j2);
 
 		if (b) {
 			Pion* pionAchete = achat();
@@ -354,7 +363,9 @@ action3(j2,j1);
 			b =false;
 		}
 
-	cout << "J2 enregistre perso"<< endl;
+		for(int y=0; y < j1.getListeEquipe().size(); y++){
+            cout << "J2 enregistre perso " << j1.getListeEquipe()[y] << endl;
+        }
 
 
 /*------------------Quand tout fonctionne----------------------- */
