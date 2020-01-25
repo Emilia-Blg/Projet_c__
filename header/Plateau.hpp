@@ -9,7 +9,7 @@ using namespace std;
 
 class Plateau{
 	private:
-		Unite tab[14]; 
+		Unite tab[14];
 	public:
 
 		Plateau();
@@ -19,9 +19,6 @@ class Plateau{
 		void placer(Unite u, int position);
 
 		Unite getTab(int index);
-
-//getter de ma tab
-
 				
 };
 #endif

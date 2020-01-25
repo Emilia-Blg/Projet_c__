@@ -19,6 +19,6 @@ void Plateau::placer(Unite u, int index){
 
 Unite Plateau::getTab(int index){
 
-	return 
+	return tab[index];
 
 }
