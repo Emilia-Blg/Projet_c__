@@ -18,9 +18,10 @@ Plateau::~Plateau(){}
 //setter de tab
 void Plateau::placer(Unite& u, int index){
     //TODO dans plateau : (dans la fonction placer) attention qu'elle set pas sur une case pleine
-    if()
+    //if()
 
-    tab[index]=u;
+
+        tab[index] = &u;
 }
 
 //getter de tab
@@ -30,15 +31,17 @@ Unite Plateau::getTab(int index){
 
 void Plateau::affiche(){
     cout<<endl<<"-----------------------------------------------"<<endl<<"Plateau"<<endl;
-    cout<<"A ";
+    cout<<"A |";
     string pions = "";
     for(int cpt=1; cpt<11; cpt++) { //Boucle de 1 a 11 pour enlever les bases qui ne sont pas des pions
         if(tab[cpt] != nullptr) {
             Pion *p = (Pion *) tab[cpt];
             pions += p->affiche();
-        }
-        cout<<pions<<" B"<<endl;
+        } else
+            pions += "  ";
+        pions += "|";
     }
+    cout<<pions<<" B"<<endl;
 }
 
 void Plateau::viderCase(int index){
