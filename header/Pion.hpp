@@ -32,7 +32,7 @@ public :
     int getPortee();
     virtual int action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau)=0;
     virtual void action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau)=0;
-
+    virtual int action3(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau)=0;
     };
 
 #endif

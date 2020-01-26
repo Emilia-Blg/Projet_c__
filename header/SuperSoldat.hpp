@@ -12,6 +12,10 @@ public :
     SuperSoldat(Fantassin f);
     ~SuperSoldat();
     string affiche();
-    //int action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B);
-};
+
+    //action1 et 2 de fantassin
+
+    int action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau);
+
+    };
 #endif

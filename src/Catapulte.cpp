@@ -255,9 +255,28 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
 
 
 //ACTION 3 : AVANCE
-void Catapulte::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
-    //avance
+int Catapulte::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
+
+    if(!atq){
+        if(droite == true){         //cas du joueur 1
+            for(int i=0; i< allie.size(); i++){
+                if(this->getPos() != (ennemi.front()->getPos()-1)){
+                    plateau.placer(*this, this->getPos()+1);
+                    plateau.viderCase(this->getPos()-1);
+                }
+            }
+        }else {
+            for (int i = 0; i < ennemi.size(); i++) {
+                if(this->getPos() != (ennemi.front()->getPos()-1)){
+                    plateau.placer(*this, this->getPos()-1);
+                    plateau.viderCase(allie[i]->getPos()+1);
+                }
+            }
+        }
+    }
+    return 0;
 }
+
 
 
 
