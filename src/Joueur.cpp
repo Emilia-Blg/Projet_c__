@@ -78,7 +78,7 @@ void Joueur::detruire(Pion* p){
 }
 
 
-void Joueur::action1(vector<Pion *> allie, vector<Pion*> ennemi, bool droite, Base &B){
+void Joueur::action1(vector<Pion *> allie, vector<Pion*> ennemi, bool droite, Base &B, Plateau &plateau){
     int a;
     if((allie.size() == 0) && (ennemi.size() == 0)){
             cout<<"Pas de pion en jeu." <<endl;
@@ -86,7 +86,7 @@ void Joueur::action1(vector<Pion *> allie, vector<Pion*> ennemi, bool droite, Ba
 
         if (droite) { //alors camp allié : par défaut à gauche
             for (int i = 0; i <allie.size(); i++) {
-                a = allie[i]->action1(allie, ennemi, true,B);  //pour chaque pion va chercher le bon élément et fait l'action associé
+                a = allie[i]->action1(allie, ennemi, true,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
                     cout << "\t\tFantassin énnemie tué !\n +5 Pieces d'Or :  " << this->getPO() << endl;
@@ -127,7 +127,7 @@ void Joueur::action1(vector<Pion *> allie, vector<Pion*> ennemi, bool droite, Ba
             }
         } else {
             for (int i = 0; i < allie.size(); i++) {
-                a = allie[i]->action1(allie, ennemi, true,B);  //pour chaque pion va chercher le bon élément et fait l'action associé
+                a = allie[i]->action1(allie, ennemi, true,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
                     cout << "\t\tFantassin énnemie tué !\n +5 Pieces d'Or :  " << this->getPO() << endl;

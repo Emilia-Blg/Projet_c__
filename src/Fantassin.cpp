@@ -32,7 +32,7 @@ string Fantassin::affiche(){
  * retourn 2 : si tue archer
  * retourn 3 : si tue catapulte
  * */
-int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B){
+int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     bool tue = false;
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
@@ -70,7 +70,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                 this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
-                    allie.erase(allie.end());     
+                    allie.erase(allie.end());
                     allie.push_back(new SuperSoldat(*this));
                     if(p->getNom() == "F"){
                         return 1;

@@ -190,9 +190,9 @@ int main (int argc, char *argv[]){
 
         plateau.affiche();
 
-        j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1);
+        j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
         cout << "ACTION 1 | JOUEUR 1" << endl;
-        j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2);
+        j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
         cout << "ACTION 1 | JOUEUR 2" << endl;
 
 

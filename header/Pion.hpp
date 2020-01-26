@@ -30,7 +30,7 @@ public :
     virtual void avancer(bool droite);
     virtual void attaque(Pion *p);
     int getPortee();
-    virtual int action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B)=0;
+    virtual int action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau)=0;
     virtual void action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau)=0;
 
     };
