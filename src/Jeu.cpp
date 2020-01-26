@@ -36,7 +36,6 @@ bool menu(Joueur &j){
             }else{
                 menu(j);
             }break;
-
         case 1 :
             if(j.getPO() >= 12){
                 j.setPO(j.getPO()-12);
@@ -44,7 +43,6 @@ bool menu(Joueur &j){
             }else{
                 menu(j);
             }break;
-
         case 2 :
             if(j.getPO() >= 22){
                 j.setPO(j.getPO()-22);
@@ -52,7 +50,6 @@ bool menu(Joueur &j){
             }else{
                 menu(j);
             }break;
-
         default :
             b = false;
     }
@@ -66,7 +63,6 @@ Pion* achat(){
         case 0 :
             p =  new Fantassin();
             break;
-
         case 1 :
             p = new Archer();
             break;
@@ -99,7 +95,6 @@ int main (int argc, char *argv[]){
     cout<<"Nombre de tours maximums";
     cin>> TOURMAX;
 
-
 //LANCEMENT DU JEU
     cout<<"____________________________________________________________________"<< endl <<"____________________________________________________________________"<< endl<<"____________________________________________________________________\n\n"<< endl;
 
@@ -127,30 +122,22 @@ int main (int argc, char *argv[]){
     Base b2;
     b2.setPointVie(100);
 
-
 //placer les unités by Emilia
      b1.setPos(0);
      plateau.placer(b1,0);//Placement de b1
      b2.setPos(11);
      plateau.placer(b2,11);//Placement de b2
 
-
 //Boucle de jeu
     while (nbTour<=TOURMAX || ((b1.getPointVie() > 0) && b2.getPointVie() > 0)){
-
 
 //Chaque joueur recoit 8 Pièces d'or
         j1.addPO(8);
         j2.addPO(8);
 
-//TOUR DE JEU J1
-
-
-
 //PERIODE D'ACHATS J1
         cout << "\n\n\n\t Joueur 1"<<  " \n"<< endl;
         bool a = menu(j1);
-
 		if (a) {
 			Pion* pionAchete = achat();
 			pionAchete->setPos(1);
@@ -161,16 +148,13 @@ int main (int argc, char *argv[]){
             for(int i=0; i<j1.getListeEquipe().size(); i++){
                 cout<< j1.getPion(i)->getNom() <<"      "<<j1.getPion(i)->getPos();
                 cout<<""<<endl;
-
             }
-
 			a =false;
 		}
 
 //PERIODE D'ACHATS J2
         cout << "\n\n\n\t Joueur 2"<<  " \n"<< endl;
         bool b = menu(j2);
-
         if (b) {
             Pion* pionAchete = achat();
             pionAchete->setPos(10);
@@ -181,9 +165,7 @@ int main (int argc, char *argv[]){
             for(int i=0; i<j2.getListeEquipe().size(); i++){
                 cout<< j2.getPion(i)->getNom() <<"      "<<j2.getPion(i)->getPos();
                 cout<<""<<endl;
-
             }
-
             b =false;
         }
 
@@ -194,6 +176,8 @@ int main (int argc, char *argv[]){
 
 
         vector<Pion*> j1Equipe = j1.getListeEquipe(), j2Equipe = j2.getListeEquipe();
+
+
         cout << "ACTION 1 | JOUEUR 1" << endl;
         j1.action1(j1Equipe, j2Equipe, j1.getBool(), b2, plateau);
         cout << "ACTION 1 | JOUEUR 2" << endl;
@@ -203,19 +187,8 @@ int main (int argc, char *argv[]){
 
         cout << "ACTION 2 | JOUEUR 1" << endl;
         j1.action2(j1Equipe, j2Equipe, j1.getBool(), b2, plateau);
-
-        for(int i=0; i<j1.getListeEquipe().size(); i++){
-            cout<< j1.getPion(i)->getNom() <<"      "<<j1.getPion(i)->getPos();
-            cout<<""<<endl;
-        }
-
         cout << "ACTION 2 | JOUEUR 2" << endl;
         j2.action2(j2Equipe, j1Equipe, j2.getBool(), b1, plateau);
-
-        for(int i=0; i<j2.getListeEquipe().size(); i++){
-            cout<< j2.getPion(i)->getNom() <<"      "<<j2.getPion(i)->getPos();
-            cout<<""<<endl;
-        }
 
         plateau.affiche();
 
@@ -245,6 +218,8 @@ int main (int argc, char *argv[]){
         cout << " JOUEUR 1 À GAGNER !!!! " << endl;
     }else if(nbTour == TOURMAX){
         cout << " EGALITE " << endl;
+    }else{
+        cout<<"KAFASSE"<<endl;
     }
 
 //Fin du jeu

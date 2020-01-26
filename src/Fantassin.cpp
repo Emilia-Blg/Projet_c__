@@ -47,10 +47,11 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                         plateau.viderCase(p->getPos());
                         ennemi.erase(it);
 
+                        //supprime le fantassin qui a tuer de la liste et le remplace par un superSoldat
                         allie.erase(allie.begin());
                         allie.push_back((Pion*)(new SuperSoldat(*this)));
 
-                        //remplacer sur le plateau fantassin par SS
+                        //remplacer sur le plateau fantassin par superSoldat
                         plateau.viderCase(allie.back()->getPos());
                         plateau.placer(*allie.back(), allie.back()->getPos());
 
@@ -67,6 +68,10 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     atq=true;
                 }
                 it++;
+            }
+            if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){ //12 à voir
+                B.setPointVie(B.getPointVie()-pointAttaque);
+                atq=true;
             }
         }
         if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){ //12 à voir
@@ -107,6 +112,10 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     atq=true;
                 }
                 it++;
+            }
+            if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){ //12 à voir
+                B.setPointVie(B.getPointVie()-pointAttaque);
+                atq=true;
             }
         }
         if ((ennemi.empty())&&(posCase-portee == 0)&&!atq){ //1 à voir

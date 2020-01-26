@@ -16,9 +16,9 @@ using namespace std;
 class Joueur{
 
 private:
-    int po;		//piece d'or
-    vector<Pion*> listeEquipe;  	 //resolution dynamique ----- liste de pions possédés
-    vector<Unite> liste;		 //set<Unite,int> liste;  //Pour mémoriser pièces + positions pdt sauvegarde (besoin de parser?)
+    int po;		                         //piece d'or
+    vector<Pion*> listeEquipe;  	     //resolution dynamique ----- liste de pions possédés
+    vector<Unite> liste;		         //set<Unite,int> liste;  //Pour mémoriser pièces + positions pdt sauvegarde (besoin de parser?)
     bool joueur = false;
 
 public:
@@ -31,7 +31,6 @@ public:
     void addPO(int i);
     int getPO();
     Pion* getPion(int index);
-    void viderListeEquipe();
     vector<Pion*> getListeEquipe();
     void setListeEquipe(vector<Pion*> liste);
     void add(Pion *p);

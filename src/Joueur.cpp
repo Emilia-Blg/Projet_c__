@@ -56,11 +56,6 @@ Pion* Joueur::getPion(int index){
     return listeEquipe[index];
 }
 
-void Joueur::viderListeEquipe(){
-    //TODO vider 1er element de la liste pour utiliser dans action1
-    listeEquipe.erase(listeEquipe.begin());
-}
-
 
 void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     int a;
@@ -72,8 +67,9 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
             for (int i = 0; i <allie.size(); i++) {
                 a = allie[i]->action1(allie, ennemi, droite,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
 
-                cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
-
+                //cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
+                //TODO
+                // Pk j'arrive a récupérer mes listes modifiés ici mais pas dans ma classe Jeu.cpp ???
 
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
@@ -119,7 +115,7 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
             for (int i = 0; i < allie.size(); i++) {
                 a = allie[i]->action1(allie, ennemi, droite,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
 
-                cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
+                //cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
 
 
                 if (a == 1) {
@@ -175,7 +171,6 @@ void Joueur::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
         }
     }
 }
-
 
 
 
