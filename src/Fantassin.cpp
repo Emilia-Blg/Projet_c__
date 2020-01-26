@@ -125,7 +125,7 @@ void Fantassin::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
 
 
 
-void Fantassin::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B){
+void Fantassin::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
 
 
 /**

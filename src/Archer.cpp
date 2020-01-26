@@ -114,6 +114,6 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
 
 
 
-void action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B){
+void action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     //fait rien
 }

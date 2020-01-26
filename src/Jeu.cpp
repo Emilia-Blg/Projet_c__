@@ -140,7 +140,7 @@ int main (int argc, char *argv[]){
     while (nbTour<=TOURMAX){            //manque la seconde condition
 
 
-//Chaque joueur recoit 8 PO
+//Chaque joueur recoit 8 Pièces d'or
         j1.addPO(8);
         j2.addPO(8);
 
@@ -148,7 +148,7 @@ int main (int argc, char *argv[]){
 
 
 
-//PERIODE D'ACHATS
+//PERIODE D'ACHATS J1
         cout << "\n\n\n\n\t Joueur 1"<<  " \n"<< endl;
         bool a = menu(j1);
 
@@ -168,7 +168,7 @@ int main (int argc, char *argv[]){
 			a =false;
 		}
 
-//PERIODE D'ACHATS
+//PERIODE D'ACHATS J2
         cout << "\n\n\n\n\t Joueur 2"<<  " \n"<< endl;
         bool b = menu(j2);
 
@@ -201,8 +201,8 @@ int main (int argc, char *argv[]){
         j2.action2(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
         cout << "ACTION 2 | JOUEUR 2" << endl;
 
-        //j1.action3();
-        //j2.action3();
+        //j1.action3(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
+        //j2.action3(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
 
 
 
@@ -214,6 +214,7 @@ int main (int argc, char *argv[]){
 
         nbTour+=1;
     }
+    //Fin de Boucle
 
     if((b1.getPointVie() == 0) && (nbTour != TOURMAX)){
         cout << " JOUEUR 2 À GAGNER !!!! " << endl;
@@ -227,10 +228,6 @@ int main (int argc, char *argv[]){
         cout << " EGALITE " << endl;
     }
 
-//Fin de Boucle
-
-
 //Fin du jeu
-//Si j1.pv=0 ou j2.pv=0
 }
 

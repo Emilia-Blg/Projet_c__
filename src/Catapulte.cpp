@@ -254,7 +254,7 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
 
 
 //ACTION 3 : AVANCE
-void Catapulte::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B){
+void Catapulte::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     //avance
 }
 
