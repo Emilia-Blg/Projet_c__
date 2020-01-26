@@ -25,46 +25,9 @@
 
 using namespace std;
 
-static int tour;
 static int i=0;
 
-//prend en paramètre une liste des pions d'un joueur
-//trier selon position MAIS deja trier selon l'ordre d'achat 
-vector<Pion*> TriProche(vector<Pion*> listEquip){
-    vector<Pion*> res;
-    int taille = listEquip.size();
-    Pion* first = nullptr;
-    for (int i=0; i<taille; i++) {
-        for (Pion* p : listEquip) {
-            first = listEquip.front();
-            if (p->getPos() < first->getPos()) {
-                first = p;
-            }
-        }
-        res.push_back(first); //On enregistre
-        vector<Pion*>::iterator it=find(listEquip.begin(), listEquip.end(), first);
-        listEquip.erase(it); //Une fois trié, on efface l'élément
-    }
-    return res;
-}
 
-vector<Pion*> TriLoin(vector<Pion*> listEquip){
-    vector<Pion*> res;
-    int taille = listEquip.size();
-    Pion* first = nullptr  ;
-    for (int i=0; i<taille; i++) {
-        for (Pion* p : listEquip) {
-            first = listEquip.front();
-            if (p->getPos() > first->getPos()) {
-                first = p;
-            }
-        }
-        res.push_back(first); //On enregistre
-        vector<Pion*>::iterator it=find(listEquip.begin(), listEquip.end(), first);
-        listEquip.erase(it); //Une fois trié, on efface l'élément
-    }
-    return res;
-}
 
 //choix des pions que le joueur souhaite acheter
 bool menu(Joueur &j){
@@ -116,98 +79,9 @@ Pion* achat(){
     }
 }
 
-/*void action1(Joueur j1, Joueur j2){
-if((tour=1)&&(!j1.getListeEquipe().empty())){
-    vector<Pion*> listAllie = TriProche(j1.getListeEquipe());
-    vector<Pion*> listEnnemi = TriProche(j2.getListeEquipe());
-    vector<Pion*> &plistAllie=listAllie;
-    vector<Pion*> &plistEnnemi=listEnnemi;
-
-    for (Pion* p : listAllie){
-        Pion* &p2=p;
-        p2->action1(plistAllie,plistEnnemi, true);
-    }
-    j1.setListeEquipe(listAllie); //MAJ des equipes
-    j2.setListeEquipe(listEnnemi);
-}
-
-if((tour=2)&&(!j2.getListeEquipe().empty())){
-    vector<Pion*> listAllie = TriLoin(j2.getListeEquipe());
-    vector<Pion*> listEnnemi = TriLoin(j1.getListeEquipe());
-    for (Pion* p : listAllie){
-            p->action1(listAllie,listEnnemi, false);
-                }
-    j2.setListeEquipe(listAllie); //MAJ des equipes
-    j1.setListeEquipe(listEnnemi);
-}
-    cout<<"Fin Action 1 du joueur";
-}*/
 
 
 
-//ACTIONNER LES PIONS EN FONCTION de int = 1 ou =2
-//lister toutes les pièces du plateau p dans deux liste (j1 et j2)
-//mémoriser leur position dans un tableau de meme dimension (j1 et j2)
-//respecter l'odre de jeu (concentrique ou excentrique pour action 3) et effectuer les actions de chaque pion
-// switch case : fantassin, catapulte...
-// ex du case fantassin : si (il n'y a pas d'allié devant)
-//	calculer la distance de chaque pièce ennemie
-//	considérer celle à la plus petite distance
-//	si portée>=distance(pièce ennemie) : attaquer la pièce cad :
-//					pièce.attaquer(ennemi)=ennemi.setPV(ennemi.getPV-pièce.getAttaque);
-//					si ennemi.PV<=0 : ennemi.tuer() et j.delete(Pion)
-//CAS ACTION 2
-//SI p.pos =2, et
-// si personne devant
-// pièce.avancer()
-//CAS ACTION 3 : comme Action1 mais dans ordre inverse
-//}
-
-
-/*
-void action2(Joueur j1, Joueur j2){
-   if((tour=1)&&(!j1->getListeEquipe().empty())){
-       vector<Pion*> listAllie = TriLoin(j1.getListeEquipe());
-       vector<Pion*> listEnnemi = TriLoin(j2.getListeEquipe());
-       for (Pion* p : listAllie){
-               p->action2(listAllie,listEnnemi, true);
-                   }
-       j1.setListEquipe(listAllie); //MAJ des equipes
-       j2.setListEquipe(listEnnemi);
-   }
-
-   if((tour=2)&&(!j2->getListeEquipe().empty())){
-       vector<Pion*> listAllie = TriProche(j2.getListeEquipe());
-       vector<Pion*> listEnnemi = TriProche(j1.getListeEquipe());
-       for (Pion* p : listAllie){
-               p->action2(listAllie,listEnnemi, false);
-                   }
-       j2.setListEquipe(listAllie); //MAJ des equipes
-       j1.setListEquipe(listEnnemi);
-   }
-}
-void action3(Joueur j1, Joueur j2){
-   if((tour=1)&&(!j1.getListeEquipe().empty())){
-       vector<Pion*> listAllie = TriProche(j1.getListeEquipe());
-       vector<Pion*> listEnnemi = TriProche(j2.getListeEquipe());
-       for (Pion* p : listAllie){
-               p->action3(listAllie,listEnnemi, true);
-                   }
-       j1.setListEquipe(listAllie); //MAJ des equipes
-       j2.setListEquipe(listEnnemi);
-   }
-
-   if((tour=2)&&(!j2.getListeEquipe().empty())){
-       vector<Pion*> listAllie = TriLoin(j2.getListeEquipe());
-       vector<Pion*> listEnnemi = TriLoin(j1.getListeEquipe());
-       for (Pion* p : listAllie){
-               p->action3(listAllie,listEnnemi, false);
-                   }
-       j2.setListEquipe(listAllie); //MAJ des equipes
-       j1.setListEquipe(listEnnemi);
-   }
-}
-*/
 
 int main (int argc, char *argv[]){
     //const int addPO = 8;
@@ -224,7 +98,6 @@ int main (int argc, char *argv[]){
 //n=2 : J1 vs IA
 
 //Selectionner nb de tour :
-
     cout<<"Nombre de tours maximums";
     cin>> TOURMAX;
 
@@ -243,30 +116,21 @@ int main (int argc, char *argv[]){
     j1.setPV(100);
     j1.setPO(0);
     j1.setBool(true);
-    //Joueur &jj1=j1;
 
     Joueur j2;
     j2.setPV(100);
     j2.setPO(0);
     j2.setBool(false);
-    //Joueur &jj2=j2;
 
 //Création du plateau
     Plateau plateau = Plateau();
 
-//Création des unités t0 : la base -
-    Base b1; //on met les bases hors de la liste des unités
+//Création des bases t0
+    Base b1;
     Base b2;
 
-//Placement des unités t0
-    //Placement des unités t0 (by Fabien)
-    /*b1.setPos(1); //Champ-position à zero
-    plateau.placer(b1,0);//Placement de b1
-    b2.setPos(12);
-    plateau.placer(b2,13);//Placement de b2*/
-
 //placer les unités by Emilia
-     b1.setPos(0); //Champ-position à zero
+     b1.setPos(0);
      plateau.placer(b1,0);//Placement de b1
      b2.setPos(11);
      plateau.placer(b2,11);//Placement de b2
@@ -280,7 +144,6 @@ int main (int argc, char *argv[]){
         j2.addPO(8);
 
 //TOUR DE JEU J1
-        //tour =1;
         /**j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1);
         cout << "ACTION 1 | JOUEUR 1" << endl;
         j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2);
@@ -315,12 +178,6 @@ int main (int argc, char *argv[]){
 
 			a =false;
 		}
-		//cout << "J1 enregistre pion : " << j1.getListeEquipe().back()->getNom() << endl;
-
-
-
-//TOUR DE JEU J2
-        //tour =2;
 
 //PERIODE D'ACHATS
         cout << "\n\n\n\n\t Joueur 2"<<  " \n"<< endl;
@@ -333,8 +190,6 @@ int main (int argc, char *argv[]){
             plateau.placer(*pionAchete,10);
             b =false;
         }
-        //cout << "J2 enregistre pion : " << j2.getListeEquipe().back()->getNom() << endl;
-
 
 		plateau.affiche();
 

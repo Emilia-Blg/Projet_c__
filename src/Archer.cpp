@@ -81,7 +81,7 @@ int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, 
             atq=true;
         }
     }
-
+    return 0;
 }
 
 

@@ -29,7 +29,7 @@ public:
     void setPV(int ppv);
     void setPO(int ppo);
     bool getBool();
-    bool setBool(bool b);
+    void setBool(bool b);
     void addPO(int i);
     int getPO();
     Pion* getPion(int index);
