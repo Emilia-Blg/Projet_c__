@@ -9,7 +9,7 @@ using namespace std;
 Plateau::Plateau(){
     tab = vector<Unite*>(12);
     for(Unite* unit : tab) {
-        unit = nullptr;
+        unit = NULL ;   //nullptr
     }
 }
 

@@ -94,7 +94,7 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
                 i++;
             }
 
-            while(this->getPos() != (ennemi.front()->getPos()-1)){
+            if(this->getPos() != (ennemi.front()->getPos()-1)){
                 cout << "test6" << endl;
 
                 this->setPos(this->getPos()+1);
@@ -127,7 +127,7 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
                 i++;
             }
 
-            while(this->getPos() != (ennemi.front()->getPos()-1)){
+            if(this->getPos() != (ennemi.front()->getPos()-1)){
                 cout << "test66" << endl;
 
                 this->setPos(this->getPos()+1);

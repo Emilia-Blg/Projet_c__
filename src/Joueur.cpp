@@ -55,9 +55,15 @@ int Joueur::getPV(){
     return pv;
 }
 
+//ajoute un pointeur de pion en fin de liste
 void Joueur::add(Pion *p){
     listeEquipe.push_back(p);
 }
+
+Pion* Joueur::getPion(int index){
+    return listeEquipe[index];
+}
+
 
 // PROBLEME DE STD ?
 void Joueur::detruire(Pion* p){
@@ -237,7 +243,9 @@ void Joueur::action2(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base
 
 
 void Joueur::action3(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau plateau){
-    //TODO si atq
+    //TODO si atq = false pour fantassin et catapulte alors
+    // fantassin attaque
+    // catapulte avance
 }
 
 

@@ -32,6 +32,7 @@ public:
     bool setBool(bool b);
     void addPO(int i);
     int getPO();
+    Pion* getPion(int index);
     vector<Pion*> getListeEquipe();
     void setListeEquipe(std::vector<Pion*> liste);
     int getPV();

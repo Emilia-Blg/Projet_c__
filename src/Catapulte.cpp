@@ -235,7 +235,7 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 i++;
             }
 
-            while(this->getPos() != (ennemi.front()->getPos()-1)){
+            if(this->getPos() != (ennemi.front()->getPos()-1)){
                 cout << "test6" << endl;
 
                 this->setPos(this->getPos()+1);
@@ -268,7 +268,7 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 i++;
             }
 
-            while(this->getPos() != (ennemi.front()->getPos()-1)){
+            if(this->getPos() != (ennemi.front()->getPos()-1)){
                 cout << "test66" << endl;
 
                 this->setPos(this->getPos()+1);
