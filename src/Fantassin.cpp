@@ -33,11 +33,11 @@ string Fantassin::affiche(){
  * retourn 3 : si tue catapulte
  * */
 int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
-    bool tue = false;
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (((portee) >= (p->getPos()-posCase))  &&  (!atq)){
+                cout<<"position ennemie"<<p->getPos()<<endl<<"position allié"<<posCase<<endl;
                 cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);
                 cout<<"apres attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
@@ -71,6 +71,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (((portee)>=(posCase-p->getPos()))&&(!atq)){
+                cout<<"position ennemie"<<p->getPos()<<endl<<"position allié"<<posCase<<endl;
                 cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);
                 cout<<"apres attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;

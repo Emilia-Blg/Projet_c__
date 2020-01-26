@@ -25,8 +25,6 @@ string Archer::getNom(){
 }
 
 int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau) {
-
-    bool tue = false;
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
@@ -115,5 +113,6 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
 }
 
 int Archer::action3(vector<Pion*> &allie, vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
+    atq = false;
     return 0;
 }

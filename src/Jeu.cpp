@@ -209,10 +209,10 @@ int main (int argc, char *argv[]){
         j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
         cout << "ACTION 2 | JOUEUR 2" << endl;
 
-        //j1.action3(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
-        //cout << "ACTION 3 | JOUEUR 1" << endl;
-        //j2.action3(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
-        //cout << "ACTION 3 | JOUEUR 2" << endl;
+        j1.action3(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
+        cout << "ACTION 3 | JOUEUR 1" << endl;
+        j2.action3(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        cout << "ACTION 3 | JOUEUR 2" << endl;
 
 
 
