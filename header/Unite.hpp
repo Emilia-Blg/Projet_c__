@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Unite {
+class Unite : public error_code {
 
  protected :
     int pointVie;

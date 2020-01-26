@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstdlib>
 #include "Unite.hpp"
+#include "Base.hpp"
+#include "Plateau.hpp"
 #include <vector>
 
 using namespace std;
@@ -11,6 +13,7 @@ using namespace std;
 class Pion : public Unite {
 
 protected :
+    string nom;
     int prix;
     int pointVie;
     int pointAttaque;
@@ -21,12 +24,13 @@ public :
     Pion();
     ~Pion();
 
+    virtual string getNom()=0;
     virtual string affiche()=0;
     int getPointAttaque();
     virtual void avancer(bool droite);
     virtual void attaque(Pion *p);
     int getPortee();
-    virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
+    virtual int action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B)=0;
 };
 
 #endif

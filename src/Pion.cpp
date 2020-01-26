@@ -8,7 +8,7 @@ Pion::Pion(){}
 
 Pion::~Pion(){}
 
-int Pion :: getPointAttaque(){
+int Pion::getPointAttaque(){
     return pointAttaque;
 }
 
@@ -21,14 +21,10 @@ void Pion::avancer(bool droite){
     p->setPointVie(p->getPointVie() - (this->getPointAttaque()));
 }
 
-int Pion :: getPortee(){
+int Pion::getPortee(){
     return portee;
 }
 
-void Pion::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite){
-    std::cout<<"Action 1 du pion";
-    //Parcours vers la droite donc
-}
 
 
 

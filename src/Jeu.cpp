@@ -13,22 +13,13 @@
 #include <algorithm>
 
 
-//TODO dans plateau : (dans la fonction placer) attention qu'elle get pas sur une case pleine
-//TODO dans plateau : fonction pour vider case
 
 //TODO dans joueur : les fonctions action prennent en paramètre mon plateau
 // + dettecter le pion le plus avancer pour le faire jouer en premier puis décrémente/incrémente
 // + faire son action (déplacer/attaquer)
-//TODO dans chaque pion : redéfinir les actions
+// TODO action 3
 
-//TODO assigner point de dégat 
-//TODO qui meurt
 
-//done
-//TODO qui gagne !!
-
-//ATTENTION J1 et J2 pas pareil en terme de sens 
-//utiliser boolean pour savoir quel joueur joue, adapter le code en fonction
 
 using namespace std;
 
@@ -123,32 +114,35 @@ Pion* achat(){
     }
 }
 
-void action1(Joueur j1, Joueur j2){
-    if((tour=1)&&(!j1.getListeEquipe().empty())){
-        vector<Pion*> listAllie = TriProche(j1.getListeEquipe());
-        vector<Pion*> listEnnemi = TriProche(j2.getListeEquipe());
-        vector<Pion*> &plistAllie=listAllie;
-        vector<Pion*> &plistEnnemi=listEnnemi;
+/*void action1(Joueur j1, Joueur j2){
+if((tour=1)&&(!j1.getListeEquipe().empty())){
+    vector<Pion*> listAllie = TriProche(j1.getListeEquipe());
+    vector<Pion*> listEnnemi = TriProche(j2.getListeEquipe());
+    vector<Pion*> &plistAllie=listAllie;
+    vector<Pion*> &plistEnnemi=listEnnemi;
 
-        for (Pion* p : listAllie){
-            Pion* &p2=p;
-            p2->action1(plistAllie,plistEnnemi, true);
-        }
-        j1.setListeEquipe(listAllie); //MAJ des equipes
-        j2.setListeEquipe(listEnnemi);
+    for (Pion* p : listAllie){
+        Pion* &p2=p;
+        p2->action1(plistAllie,plistEnnemi, true);
     }
-
-    /*if((tour=2)&&(!j2.getListeEquipe().empty())){
-        vector<Pion*> listAllie = TriLoin(j2.getListeEquipe());
-        vector<Pion*> listEnnemi = TriLoin(j1.getListeEquipe());
-        for (Pion* p : listAllie){
-                p->action1(listAllie,listEnnemi, false);
-                    }
-        j2.setListeEquipe(listAllie); //MAJ des equipes
-        j1.setListeEquipe(listEnnemi);
-    }*/
-    cout<<"Fin Action 1 du joueur";
+    j1.setListeEquipe(listAllie); //MAJ des equipes
+    j2.setListeEquipe(listEnnemi);
 }
+
+if((tour=2)&&(!j2.getListeEquipe().empty())){
+    vector<Pion*> listAllie = TriLoin(j2.getListeEquipe());
+    vector<Pion*> listEnnemi = TriLoin(j1.getListeEquipe());
+    for (Pion* p : listAllie){
+            p->action1(listAllie,listEnnemi, false);
+                }
+    j2.setListeEquipe(listAllie); //MAJ des equipes
+    j1.setListeEquipe(listEnnemi);
+}
+    cout<<"Fin Action 1 du joueur";
+}*/
+
+
+
 //ACTIONNER LES PIONS EN FONCTION de int = 1 ou =2
 //lister toutes les pièces du plateau p dans deux liste (j1 et j2)
 //mémoriser leur position dans un tableau de meme dimension (j1 et j2)
@@ -167,7 +161,6 @@ void action1(Joueur j1, Joueur j2){
 //CAS ACTION 3 : comme Action1 mais dans ordre inverse
 //}
 
-//TODO
 
 /*
 void action2(Joueur j1, Joueur j2){
@@ -234,24 +227,20 @@ int main (int argc, char *argv[]){
     cin>> TOURMAX;
 
 
-
-
-
-
 //LANCEMENT DU JEU
     cout<<"____________________________________________________________________"<< endl <<"____________________________________________________________________"<< endl<<"____________________________________________________________________\n\n"<< endl;
 
 
-//--Mode de jeu J1 vs J2
+/**--Mode de jeu J1 vs J2*/
 
 //Initialisation : 
     int nbTour=1;
 
 //Création des 2 joueurs j1 et j2
-
     Joueur j1;
     j1.setPV(100);
     j1.setPO(0);
+    j1.setBool(true);
     //Joueur &jj1=j1;
 
     Joueur j2;
@@ -279,27 +268,30 @@ int main (int argc, char *argv[]){
      b2.setPos(11);
      plateau.placer(b2,11);//Placement de b2
 
-     cout << "base 1 : " << b1.getPos() << endl;
-     cout << "base 2 : " << b2.getPos() << endl;
 
 //Boucle de jeu (Tant que nbTour<TOURMAX && j1.nbPV>0 && j2.nbPV >0)
-
-
-    while (nbTour<=TOURMAX){
+    while (nbTour<=TOURMAX){            //manque la seconde condition
 
 //Chaque joueur recoit 8 PO
         j1.addPO(8);
         j2.addPO(8);
 
-
 //TOUR DE JEU J1
-        tour =1;
-        action1(j1,j2);
+        //tour =1;
+        /**j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1);
+        cout << "ACTION 1 | JOUEUR 1" << endl;
+        j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2);
+        cout << "ACTION 1 | JOUEUR 2" << endl;
+        */
 
-/*
-action2(j1,j2);
-action3(j1,j2);
-*/
+        j1.action2(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
+        cout << "ACTION 2 | JOUEUR 1" << endl;
+        j2.action2(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
+        cout << "ACTION 2 | JOUEUR 2" << endl;
+
+        //j1.action3();
+        //j2.action3();
+
 
 //PERIODE D'ACHATS
         cout << "\n\n\n\n\t Joueur 1"<<  " \n"<< endl;
@@ -312,21 +304,12 @@ action3(j1,j2);
 			plateau.placer(*pionAchete,1);
 			a =false;
 		}
+		//cout << "J1 enregistre pion : " << j1.getListeEquipe().back()->getNom() << endl;
 
-        for(int y=0; y < j1.getListeEquipe().size(); y++){
-            cout << "J1 enregistre perso " << j1.getListeEquipe()[y]->affiche() << endl;
-        }
-
-	    cout << "nbTour : " << nbTour << endl;
 
 
 //TOUR DE JEU J2
-        tour =2;
-        //action1(j2,j1);
-/*
-action2(j2,j1);
-action3(j2,j1);
-*/
+        //tour =2;
 
 //PERIODE D'ACHATS
         cout << "\n\n\n\n\t Joueur 2"<<  " \n"<< endl;
@@ -339,10 +322,8 @@ action3(j2,j1);
             plateau.placer(*pionAchete,10);
             b =false;
         }
+        //cout << "J2 enregistre pion : " << j2.getListeEquipe().back()->getNom() << endl;
 
-		for(int y=0; y < j2.getListeEquipe().size(); y++){
-            cout << "J2 enregistre perso " << j2.getListeEquipe()[y]->affiche() << endl;
-        }
 
 		plateau.affiche();
 
@@ -353,14 +334,19 @@ action3(j2,j1);
 /* ------------------------------------------------------------- */
 
 
-        if(b1.getPointVie() == 0){
-            cout << " Joueur 2 à gagner !!!! " << endl;
-        }else if(b2.getPointVie() == 0){
-            cout << " Joueur 1 à gagner !!!! " << endl;
-        }
-
-
         nbTour+=1;
+    }
+
+    if((b1.getPointVie() == 0) && (TOURMAX != 0)){
+        cout << " JOUEUR 2 À GAGNER !!!! " << endl;
+    }
+
+    if((b2.getPointVie() == 0) && (TOURMAX != 0)){
+        cout << " JOUEUR 1 À GAGNER !!!! " << endl;
+    }
+
+    if(TOURMAX == 0){
+        cout << " EGALITE " << endl;
     }
 
 //Fin de Boucle

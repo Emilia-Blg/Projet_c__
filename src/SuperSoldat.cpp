@@ -5,17 +5,18 @@
 using namespace std;
 
 SuperSoldat::SuperSoldat(Fantassin f){
+    nom = "SS";
     pointVie = f.getPointVie();
     posCase = f.getPos();
 }
 
-SuperSoldat::~SuperSoldat(){
-    //delete[] pointVie;
-}
+SuperSoldat::~SuperSoldat(){}
 
 string SuperSoldat::affiche(){
     return " SS ";
 }
 
-void SuperSoldat::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite){std::cout<<"SALUT";}
+//void SuperSoldat::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base base) {
+
+//}
 

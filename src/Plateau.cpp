@@ -15,13 +15,24 @@ Plateau::Plateau(){
 
 Plateau::~Plateau(){}
 
+/** vérifie que pas de pion sur la case en question*/
+/**
+ * true : pion sur la
+ * false : pas de pion --> ajout du pion mis en paramètre
+ * */
 //setter de tab
-void Plateau::placer(Unite& u, int index){
-    //TODO dans plateau : (dans la fonction placer) attention qu'elle set pas sur une case pleine
-    //if()
+bool Plateau::placer(Unite& u, int index){
+    //action 1 déplace les éléments
+    //retourn bool pour dire si ya ou pas
 
-
+    if(tab[index] == NULL ){
         tab[index] = &u;
+        return false;
+    }else{
+        return true;
+    }
+
+
 }
 
 //getter de tab
@@ -44,8 +55,9 @@ void Plateau::affiche(){
     cout<<pions<<" Base B"<<endl<<"---------------------------------------------------------"<<endl<<endl;
 }
 
+//supprime l'élément dans la case i de tab
 void Plateau::viderCase(int index){
-    //TODO dans plateau : fonction pour vider case
+    tab[index] = NULL;
 }
 
 

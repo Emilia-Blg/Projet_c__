@@ -15,10 +15,9 @@ public:
     Plateau();
     ~Plateau();
 
-    void placer(Unite& u, int position);
+    bool placer(Unite& u, int position);
     Unite getTab(int index);
     void viderCase(int index);
-
     void affiche();
 };
 #endif

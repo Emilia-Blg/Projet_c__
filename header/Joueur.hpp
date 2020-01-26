@@ -8,6 +8,8 @@
 #include <algorithm>
 #include "Pion.hpp"
 #include "Unite.hpp"
+#include "Base.hpp"
+#include "Plateau.hpp"
 
 using namespace std;
 
@@ -18,6 +20,7 @@ private:
     int po;		//piece d'or
     vector<Pion*> listeEquipe;  	 //resolution dynamique ----- liste de pions possédés
     vector<Unite> liste;		 //set<Unite,int> liste;  //Pour mémoriser pièces + positions pdt sauvegarde (besoin de parser?)
+    bool joueur = false;
 
 public:
     Joueur();
@@ -25,6 +28,8 @@ public:
 
     void setPV(int ppv);
     void setPO(int ppo);
+    bool getBool();
+    bool setBool(bool b);
     void addPO(int i);
     int getPO();
     vector<Pion*> getListeEquipe();
@@ -32,6 +37,9 @@ public:
     int getPV();
     void add(Pion *p);
     void detruire(Pion* p);
-    void action1();
+    void action1(vector<Pion *> allie, vector<Pion *> ennemi, bool droite, Base &B);
+    void action2(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau plateau);
+    void action3(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau plateau);
+
 };
 #endif

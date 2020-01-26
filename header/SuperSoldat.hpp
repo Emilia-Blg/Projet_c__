@@ -6,12 +6,12 @@
 
 using namespace std;
 
-class SuperSoldat : public Pion {
+class SuperSoldat : public Fantassin {
 
 public :
     SuperSoldat(Fantassin f);
     ~SuperSoldat();
     string affiche();
-    virtual void action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite);
+    //int action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B);
 };
 #endif
