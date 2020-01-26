@@ -175,7 +175,7 @@ void Joueur::action1(vector<Pion *> allie, vector<Pion*> ennemi, bool droite, Ba
 void Joueur::action2(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau plateau){
 
     for(int l=0; l<allie.size(); l++){
-        allie[l]->action2(allie,ennemi,true,B,plateau);
+        allie[l]->action2(allie,ennemi,droite,B,plateau);
     }
 
     /**if(droite){         //cas du joueur 1

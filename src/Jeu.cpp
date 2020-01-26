@@ -248,7 +248,7 @@ int main (int argc, char *argv[]){
     Joueur j2;
     j2.setPV(100);
     j2.setPO(0);
-    j1.setBool(false);
+    j2.setBool(false);
     //Joueur &jj2=j2;
 
 //Création du plateau
@@ -308,7 +308,9 @@ int main (int argc, char *argv[]){
 
 			cout<<"\n"<<endl;
             for(int i=0; i<j1.getListeEquipe().size(); i++){
-                cout<< j1.getPion(i)->getNom() <<"\n      "<<j1.getPion(i)->getPos();
+                cout<< j1.getPion(i)->getNom() <<"      "<<j1.getPion(i)->getPos();
+                cout<<""<<endl;
+
             }
 
 			a =false;
