@@ -9,7 +9,7 @@ using namespace std;
 Plateau::Plateau(){
     tab = vector<Unite*>(12);
     for(Unite* unit : tab) {
-        unit = NULL ;   //nullptr
+        unit = nullptr ;
     }
 }
 
@@ -25,8 +25,9 @@ bool Plateau::placer(Unite& u, int index){
     //action 1 déplace les éléments
     //retourn bool pour dire si ya ou pas
 
-    if(tab[index] == NULL ){
+    if(tab[index] == nullptr ){
         tab[index] = &u;
+        u.setPos(index);
         return false;
     }else{
         return true;
@@ -61,7 +62,7 @@ void Plateau::affiche(){
 
 //supprime l'élément dans la case i de tab
 void Plateau::viderCase(int index){
-    tab[index] = NULL;
+    tab[index] = nullptr;
 }
 
 
