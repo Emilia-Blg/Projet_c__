@@ -103,15 +103,25 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
                 plateau.viderCase(this->getPos()-1);
                 cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
             }
+            if(ennemi.size() == 0){
+                plateau.placer(*this, this->getPos()+1);
+                plateau.viderCase(this->getPos()-1);
+                cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
+            }
         }
     }else {
-        for (int i = 0; i < ennemi.size(); i++) {
-            if (ennemi[i]->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
+        for (int i = 0; i < allie.size(); i++) {
+            if (allie[i]->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
                 i++;
             }
-            if(this->getPos() != (ennemi.front()->getPos()+1)){
+            if(this->getPos() != (allie.front()->getPos()+1)){
                 plateau.placer(*this, this->getPos()-1);
                 plateau.viderCase(this->getPos()+1);
+                cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
+            }
+            if(allie.size() == 0){
+                plateau.placer(*this, this->getPos()+1);
+                plateau.viderCase(this->getPos()-1);
                 cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
             }
         }

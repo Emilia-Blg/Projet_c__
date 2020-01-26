@@ -22,9 +22,6 @@ Plateau::~Plateau(){}
  * */
 //setter de tab
 bool Plateau::placer(Unite& u, int index){
-    //action 1 déplace les éléments
-    //retourn bool pour dire si ya ou pas
-
     if(tab[index] == nullptr ){
         tab[index] = &u;
         u.setPos(index);

@@ -47,7 +47,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     ennemi.erase(it);
 
                     allie.erase(allie.begin());
-                    allie.push_back(new SuperSoldat(*this));
+                    allie.push_back((Pion*)(new SuperSoldat(*this)));
 
                     //remplacer sur le plateau fantassin par SS
                     plateau.viderCase(allie.back()->getPos());
@@ -85,7 +85,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     ennemi.erase(it);
 
                     allie.erase(allie.end());
-                    allie.push_back(new SuperSoldat(*this));
+                    allie.push_back((Pion*)(new SuperSoldat(*this)));
 
                     //remplacer sur le plateau fantassin par SS
                     plateau.viderCase(allie.front()->getPos());
@@ -129,8 +129,8 @@ void Fantassin::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
             }
         }
     }else {
-        for (int i = 0; i < ennemi.size(); i++) {
-            if (ennemi[i]->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
+        for (int i = 0; i < allie.size(); i++) {
+            if (this->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
                 i++;
             }
             if(this->getPos() != (ennemi.front()->getPos()+1)){

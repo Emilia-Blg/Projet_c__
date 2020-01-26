@@ -198,8 +198,19 @@ int main (int argc, char *argv[]){
 
         cout << "ACTION 2 | JOUEUR 1" << endl;
         j1.action2(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
+        
+        for(int i=0; i<j1.getListeEquipe().size(); i++){
+            cout<< j1.getPion(i)->getNom() <<"      "<<j1.getPion(i)->getPos();
+            cout<<""<<endl;
+        }
+
         cout << "ACTION 2 | JOUEUR 2" << endl;
         j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+
+        for(int i=0; i<j2.getListeEquipe().size(); i++){
+            cout<< j2.getPion(i)->getNom() <<"      "<<j2.getPion(i)->getPos();
+            cout<<""<<endl;
+        }
 
         plateau.affiche();
 

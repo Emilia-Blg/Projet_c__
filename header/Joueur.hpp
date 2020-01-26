@@ -33,6 +33,7 @@ public:
     void addPO(int i);
     int getPO();
     Pion* getPion(int index);
+    void viderListeEquipe();
     vector<Pion*> getListeEquipe();
     void setListeEquipe(vector<Pion*> liste);
     int getPV();

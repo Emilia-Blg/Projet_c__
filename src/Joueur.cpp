@@ -64,6 +64,11 @@ Pion* Joueur::getPion(int index){
     return listeEquipe[index];
 }
 
+void Joueur::viderListeEquipe(){
+    //TODO vider 1er element de la liste pour utiliser dans action1
+    listeEquipe.erase(listeEquipe.begin());
+}
+
 
 void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     int a;
@@ -108,8 +113,7 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                 }
                 if (a == 9) {
                     this->setPO(this->getPO() + 15); //si tue catapulte
-                    cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n\t +15 Pieces d'Or :  " << this->getPO()
-                         << endl;
+                    cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n\t +15 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if(a == 0){
                     cout<<"Rien fait !"<<endl;
@@ -152,8 +156,7 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                 }
                 if (a == 9) {
                     this->setPO(this->getPO() + 15); //si tue catapulte
-                    cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n +15 Pieces d'Or :  " << this->getPO()
-                         << endl;
+                    cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n +15 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if(a == 0){
                     cout<<"Rien fait !"<<endl;

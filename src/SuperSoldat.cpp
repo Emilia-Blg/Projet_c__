@@ -27,8 +27,8 @@ int SuperSoldat::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, b
                 this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
-                    allie.erase(allie.end());
-                    allie.push_back(new SuperSoldat(*this));
+                    plateau.viderCase((*it.base())->getPos());
+                    ennemi.erase(it);
                     if(p->getNom() == "F"){
                         return 1;
                     }
@@ -38,8 +38,6 @@ int SuperSoldat::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, b
                     if(p->getNom() == "C"){
                         return 3;
                     }
-                    plateau.viderCase((*it.base())->getPos());
-                    ennemi.erase(it);
                 }
             }
             it++;
@@ -55,8 +53,8 @@ int SuperSoldat::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, b
                 this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
-                    allie.erase(allie.end());
-                    allie.push_back(new SuperSoldat(*this));
+                    plateau.viderCase((*it.base())->getPos());
+                    ennemi.erase(it);
                     if(p->getNom() == "F"){
                         return 1;
                     }
@@ -66,8 +64,6 @@ int SuperSoldat::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, b
                     if(p->getNom() == "C"){
                         return 3;
                     }
-                    plateau.viderCase((*it.base())->getPos());
-                    ennemi.erase(it);
                 }
             }
             it++;
