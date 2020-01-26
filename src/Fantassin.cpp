@@ -41,8 +41,8 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                 this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
-                    allie.push_back(new SuperSoldat(*this));
                     allie.erase(allie.end());
+                    allie.push_back(new SuperSoldat(*this));
                     if(p->getNom() == "F"){
                         return 1;
                     }
@@ -70,8 +70,8 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                 this->attaque(p);
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
+                    allie.erase(allie.end());     
                     allie.push_back(new SuperSoldat(*this));
-                    allie.erase(allie.end());        //TODO /** retire au début ou a la fin ... ??  */
                     if(p->getNom() == "F"){
                         return 1;
                     }
