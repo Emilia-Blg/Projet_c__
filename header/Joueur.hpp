@@ -34,7 +34,7 @@ public:
     int getPO();
     Pion* getPion(int index);
     vector<Pion*> getListeEquipe();
-    void setListeEquipe(std::vector<Pion*> liste);
+    void setListeEquipe(vector<Pion*> liste);
     int getPV();
     void add(Pion *p);
     void detruire(Pion* p);

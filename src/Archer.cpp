@@ -24,7 +24,7 @@ string Archer::getNom(){
     return nom;
 }
 
-int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B) {
+int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau) {
 
     bool tue = false;
     if (droite){
