@@ -53,7 +53,8 @@ int Catapulte::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droit
                             return 9;
                         }
                     }
-                    ennemi.erase(it);
+                    plateau.viderCase((*it.base())->getPos());
+                    ennemi.erase(it); //todo : Voir pour changer le deuxieme it
                     ennemi.erase(it++);
                 }else{
                     this->attaque(p);
