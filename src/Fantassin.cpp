@@ -13,7 +13,7 @@ Fantassin::Fantassin(){
     pointAttaque = 4;
     portee = 1;
     //posCase;
-    bool atq = false;
+    atq = false;
 }
 
 Fantassin::~Fantassin(){}
@@ -37,8 +37,11 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
+            cout<<"ennemi pointeur "<<p <<" pv = "<< p->getPointVie();
             if (((portee) >= (p->getPos()-posCase))  &&  (!atq)){
+                cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);
+                cout<<"apres attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
                     allie.erase(allie.end());
@@ -52,6 +55,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     if(p->getNom() == "C"){
                         return 3;
                     }
+                    cout<<"suppresion fantassin en case "<<(*it.base())->getPos()<<endl;
                     plateau.viderCase((*it.base())->getPos());
                     ennemi.erase(it);
                 }
@@ -68,7 +72,9 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (((portee)>=(posCase-p->getPos()))&&(!atq)){
+                cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);
+                cout<<"apres attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
                     allie.erase(allie.end());
@@ -82,6 +88,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     if(p->getNom() == "C"){
                         return 3;
                     }
+                    cout<<"suppresion fantassin en case "<<(*it.base())->getPos()<<endl;
                     plateau.viderCase((*it.base())->getPos());
                     ennemi.erase(it);
                 }
@@ -94,6 +101,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
             atq=true;
         }
     }
+    cout<<endl;
     return 0;
 }
 

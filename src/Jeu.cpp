@@ -69,14 +69,18 @@ bool menu(Joueur &j){
 
 //le pion acheter
 Pion* achat(){
+    Pion* p = nullptr;
     switch (i){
         case 0 :
-            return new Fantassin();
+            p = new Fantassin();
+
         case 1 :
-            return new Archer();
+            p = new Archer();
         default :
-            return new Catapulte();
+            p = new Catapulte();
     }
+    cout<<"pv p= "<<p->getPointVie()<<endl;
+    return p;
 }
 
 
@@ -153,7 +157,8 @@ int main (int argc, char *argv[]){
         bool a = menu(j1);
 
 		if (a) {
-			Pion* pionAchete = achat(); 
+			Pion* pionAchete = achat();
+			cout<<"pv F j1 "<<pionAchete->getPointVie()<<endl;
 			pionAchete->setPos(1);
 			j1.add(pionAchete);
 			plateau.placer(*pionAchete,1);
@@ -174,6 +179,7 @@ int main (int argc, char *argv[]){
 
         if (b) {
             Pion* pionAchete = achat();
+            cout<<"pv F j2"<<pionAchete->getPointVie()<<endl;
             pionAchete->setPos(10);
             j2.add(pionAchete);
             plateau.placer(*pionAchete,10);
@@ -190,15 +196,17 @@ int main (int argc, char *argv[]){
 
         plateau.affiche();
 
-        j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
+        vector<Pion*> j1Equipe = j1.getListeEquipe(), j2Equipe = j2.getListeEquipe();
+
+        j1.action1(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 1 | JOUEUR 1" << endl;
-        j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
+        j2.action1(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
         cout << "ACTION 1 | JOUEUR 2" << endl;
 
 
-        j1.action2(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
+        j1.action2(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 2 | JOUEUR 1" << endl;
-        j2.action2(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2, plateau);
+        j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
         cout << "ACTION 2 | JOUEUR 2" << endl;
 
         //j1.action3(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
