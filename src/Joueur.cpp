@@ -172,7 +172,7 @@ void Joueur::action1(vector<Pion *> allie, vector<Pion*> ennemi, bool droite, Ba
 
 
 
-void Joueur::action2(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau plateau){
+void Joueur::action2(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau &plateau){
     for(int l=0; l<allie.size(); l++){
         allie[l]->action2(allie,ennemi,droite,B,plateau);
     }
@@ -181,7 +181,7 @@ void Joueur::action2(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base
 
 
 
-void Joueur::action3(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau plateau){
+void Joueur::action3(vector<Pion*> allie,vector<Pion*> ennemi, bool droite, Base &B, Plateau &plateau){
     //TODO si atq = false pour fantassin et catapulte alors
     // fantassin attaque
     // catapulte avance
