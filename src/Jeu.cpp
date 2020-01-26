@@ -13,14 +13,6 @@
 #include <algorithm>
 
 
-//TODO problème remplissage de mon plateau et de ma listeEquipe
-
-
-//TODO dans joueur : les fonctions action prennent en paramètre mon plateau
-// + dettecter le pion le plus avancer pour le faire jouer en premier puis décrémente/incrémente
-// + faire son action (déplacer/attaquer)
-// TODO action 3
-
 
 
 using namespace std;
@@ -203,17 +195,21 @@ int main (int argc, char *argv[]){
         j2.action1(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
         cout << "ACTION 1 | JOUEUR 2" << endl;
 
+        plateau.affiche();
 
         j1.action2(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 2 | JOUEUR 1" << endl;
         j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
         cout << "ACTION 2 | JOUEUR 2" << endl;
 
+        plateau.affiche();
+
         j1.action3(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 3 | JOUEUR 1" << endl;
         j2.action3(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
         cout << "ACTION 3 | JOUEUR 2" << endl;
 
+        plateau.affiche();
 
 
 /*------------------Quand tout fonctionne----------------------- */
