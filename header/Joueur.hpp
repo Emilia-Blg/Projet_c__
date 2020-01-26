@@ -37,7 +37,6 @@ public:
     void setListeEquipe(vector<Pion*> liste);
     int getPV();
     void add(Pion *p);
-    void detruire(Pion* p);
     void action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau);
     void action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau);
     void action3(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau);

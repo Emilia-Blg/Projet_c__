@@ -25,30 +25,33 @@ string Archer::getNom(){
 }
 
 int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau) {
+    int res =0;
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (    ((portee)>=(p->getPos()-posCase))  &&  (!atq)    ){       //si position ennemie + proche - position actuel <= 3 alors attaque
                 this->attaque(p);
                 if (p->getPointVie()<=0){
-                    cout<<"Pion tué"<<endl;
+                    cout<<"Pion tué par un archer"<<endl;
+                    plateau.viderCase(p->getPos());
+                    ennemi.erase(it);
                     if(p->getNom() == "F"){
-                        return 1;
+                        res = 1;
                     }
                     if(p->getNom() == "A"){
-                        return 2;
+                        res = 2;
                     }
                     if(p->getNom() == "C"){
-                        return 3;
+                        res = 3;
                     }
-                    plateau.viderCase((*it.base())->getPos());
-                    ennemi.erase(it);
+                    //plateau.viderCase((*it.base())->getPos());
+                    //ennemi.erase(it);
                 }
                 atq=true;
             }
             it++;
         }
-        if (  (ennemi.empty())  &&  ((posCase+portee) >= 11)  &&  !atq){ //12 à voir
+        if (  (ennemi.empty())  &&  ((posCase+portee) >= 12)  &&  !atq){ //12 à voir
             B.setPointVie(B.getPointVie()-pointAttaque);
             atq=true;
         }
@@ -59,29 +62,31 @@ int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, 
             if (  ((portee) >= (posCase-p->getPos() ))  &&  (!atq)){
                 this->attaque(p);
                 if (p->getPointVie()<=0){
-                    cout<<"Pion tué"<<endl;
+                    cout<<"Pion tué par un archer"<<endl;
+                    plateau.viderCase(p->getPos());
+                    ennemi.erase(it);
                     if(p->getNom() == "F"){
-                        return 1;
+                        res = 1;
                     }
                     if(p->getNom() == "A"){
-                        return 2;
+                        res = 2;
                     }
                     if(p->getNom() == "C"){
-                        return 3;
+                        res = 3;
                     }
-                    plateau.viderCase((*it.base())->getPos());
-                    ennemi.erase(it);
+                    //plateau.viderCase((*it.base())->getPos());
+                    //ennemi.erase(it);
                 }
                 atq=true;
             }
             it++;
         }
-        if ( (ennemi.empty()) && ((posCase-portee) >= 0) && !atq){ //1 à voir
+        if ( (ennemi.empty()) && ((posCase-portee) <= 0) && !atq){ //1 à voir
             B.setPointVie(B.getPointVie()-pointAttaque);
             atq=true;
         }
     }
-    return 0;
+    return res;
 }
 
 
@@ -93,10 +98,10 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
             if(this->getNom() != "C"){          //si la pion est une catapulte on passe a la case suivante
                 i++;
             }
-
             if(this->getPos() != (ennemi.front()->getPos()-1)){
                 plateau.placer(*this, this->getPos()+1);
                 plateau.viderCase(this->getPos()-1);
+                cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
             }
         }
     }else {
@@ -104,9 +109,10 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
             if (ennemi[i]->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
                 i++;
             }
-            if(this->getPos() != (ennemi.front()->getPos()-1)){
+            if(this->getPos() != (ennemi.front()->getPos()+1)){
                 plateau.placer(*this, this->getPos()-1);
-                plateau.viderCase(allie[i]->getPos()+1);
+                plateau.viderCase(this->getPos()+1);
+                cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
             }
         }
     }

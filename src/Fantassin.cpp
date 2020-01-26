@@ -33,23 +33,26 @@ string Fantassin::affiche(){
  * retourn 3 : si tue catapulte
  * */
 int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
-    bool tue = false;
     int res = 0;
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (((portee) == (p->getPos()-posCase))  &&  (!atq)){
-                cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
+                cout<<"avant attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);
-                cout<<"apres attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
+                cout<<"apres attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                 if (p->getPointVie()<=0){
                     cout<<"Pion tué par un fantassin"<<endl;
-                    cout<<"suppresion fantassin en case "<<p->getPos()<<endl;
                     plateau.viderCase(p->getPos());
                     ennemi.erase(it);
 
                     allie.erase(allie.begin());
                     allie.push_back(new SuperSoldat(*this));
+
+                    //remplacer sur le plateau fantassin par SS
+                    plateau.viderCase(allie.back()->getPos());
+                    plateau.placer(*allie.back(), allie.back()->getPos());
+
                     if(p->getNom() == "F"){
                         res = 1;
                     }
@@ -64,7 +67,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
             }
             it++;
         }
-        if ((ennemi.empty())&&(posCase+portee >= 12)&&!atq){ //12 à voir
+        if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){ //12 à voir
             B.setPointVie(B.getPointVie()-pointAttaque);
             atq=true;
         }
@@ -73,17 +76,21 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
             if (((portee)==(posCase-p->getPos()))&&(!atq)){
-                cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
+                cout<<"avant attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);
-                cout<<"apres attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
+                cout<<"apres attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                 if (p->getPointVie()<=0){
                     cout<<"Pion tue par un fantassin"<<endl;
-                    cout<<"suppresion fantassin en case "<<p->getPos()<<endl;
                     plateau.viderCase(p->getPos());
                     ennemi.erase(it);
 
                     allie.erase(allie.end());
                     allie.push_back(new SuperSoldat(*this));
+
+                    //remplacer sur le plateau fantassin par SS
+                    plateau.viderCase(allie.front()->getPos());
+                    plateau.placer(*allie.front(), allie.front()->getPos());
+
                     if(p->getNom() == "F"){
                         res = 1;
                     }
@@ -98,7 +105,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
             }
             it++;
         }
-        if ((ennemi.empty())&&(posCase-portee >= 1)&&!atq){ //1 à voir
+        if ((ennemi.empty())&&(posCase-portee == 0)&&!atq){ //1 à voir
             B.setPointVie(B.getPointVie()-pointAttaque);
             atq=true;
         }
@@ -118,16 +125,18 @@ void Fantassin::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
             if(this->getPos() != (ennemi.front()->getPos()-1)){
                 plateau.placer(*this, this->getPos()+1);
                 plateau.viderCase(this->getPos()-1);
+                cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
             }
         }
     }else {
-        for (int i = 0; i < allie.size(); i++) {
-            if (allie[i]->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
+        for (int i = 0; i < ennemi.size(); i++) {
+            if (ennemi[i]->getNom() != "C") {          //si la pion est une catapulte on passe a la case suivante
                 i++;
             }
             if(this->getPos() != (ennemi.front()->getPos()+1)){
                 plateau.placer(*this, this->getPos()-1);
                 plateau.viderCase(this->getPos()+1);
+                cout<<"j'ai avancer mon pion "<<this->getNom()<<endl;
             }
         }
     }

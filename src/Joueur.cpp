@@ -65,19 +65,6 @@ Pion* Joueur::getPion(int index){
 }
 
 
-// PROBLEME DE STD ?
-void Joueur::detruire(Pion* p){
-    //if((find(listeEquipe.begin(),listeEquipe.end(),p))!=(listeEquipe.end()))
-    //Pion* pp;
-    //auto pp = find(listeEquipe.begin(),listeEquipe.end(),p); //A voir
-    // ou alors juste listeEquipe.remove(p)
-    //}
-    /*else{
-        cout << "Pièce non présente sur le plateau" ;
-    }*/
-}
-
-
 void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     int a;
     if((allie.size() == 0) && (ennemi.size() == 0)){
@@ -89,40 +76,43 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                 a = allie[i]->action1(allie, ennemi, true,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
-                    cout << "\t\tFantassin énnemie tué !\n +5 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\tFantassin énnemie tué !\n\t +5 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 2) {
                     this->setPO(this->getPO() + 6); //si tue archer
-                    cout << "\t\tArcher énnemie tué !\n +6 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\tArcher énnemie tué !\n\t +6 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 3) {
                     this->setPO(this->getPO() + 10); //si tue catapulte
-                    cout << "\t\tCatapulte énnemie tué !\n +10 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\tCatapulte énnemie tué !\n\t +10 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 4) {
                     this->setPO(this->getPO() + 10); //si tue catapulte
-                    cout << "\t\t2 Fantassins énnemies tués !\n +10 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\t2 Fantassins énnemies tués !\n\t +10 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 5) {
                     this->setPO(this->getPO() + 12); //si tue catapulte
-                    cout << "\t\t2 Archers énnemies tués !\n +12 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\t2 Archers énnemies tués !\n\t +12 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 6) {
                     this->setPO(this->getPO() + 20); //si tue catapulte
-                    cout << "\t\t2 Catapultes énnemies tués !\n +20 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\t2 Catapultes énnemies tués !\n\t +20 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 7) {
                     this->setPO(this->getPO() + 11); //si tue catapulte
-                    cout << "\t\t1 Fantassin & 1 Arché énnemies tués !\n +11 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\t1 Fantassin & 1 Arché énnemies tués !\n\t +11 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 8) {
                     this->setPO(this->getPO() + 16); //si tue catapulte
-                    cout << "\t\t1 Catapulte & 1 Arché énnemies tués !\n +16 Pieces d'Or :  " << this->getPO() << endl;
+                    cout << "\t\t1 Catapulte & 1 Arché énnemies tués !\n\t +16 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if (a == 9) {
                     this->setPO(this->getPO() + 15); //si tue catapulte
-                    cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n +15 Pieces d'Or :  " << this->getPO()
+                    cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n\t +15 Pieces d'Or :  " << this->getPO()
                          << endl;
+                }
+                if(a == 0){
+                    cout<<"Rien fait !"<<endl;
                 }
             }
         } else {
@@ -165,6 +155,9 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                     cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n +15 Pieces d'Or :  " << this->getPO()
                          << endl;
                 }
+                if(a == 0){
+                    cout<<"Rien fait !"<<endl;
+                }
             }
         }
     }
@@ -185,9 +178,6 @@ void Joueur::action3(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
     for(int l=0; l<allie.size(); l++){
         allie[l]->action3(allie,ennemi,droite,B,plateau);
     }
-    //TODO si atq = false pour fantassin et catapulte alors
-    // fantassin attaque
-    // catapulte avance
 }
 
 

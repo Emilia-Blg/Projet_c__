@@ -24,8 +24,8 @@ static int i=0;
 //choix des pions que le joueur souhaite acheter
 bool menu(Joueur &j){
     bool b;
+    cout << "PIECES DISPONIBLES : " << j.getPO()<<endl<<endl;
     cout << "Quel pion souhaitez-vous acheter ? \n\t0 : fantassin (10 pieces) \t1 : archer (12 pieces) \t2 : catapulte (22 pieces) \t3 : Rien" <<  endl;
-    cout << "PIECES DISPONIBLES : " << j.getPO()<<endl;
     cin >> i;
 
     switch(i){
@@ -134,8 +134,8 @@ int main (int argc, char *argv[]){
      plateau.placer(b2,11);//Placement de b2
 
 
-//Boucle de jeu (Tant que nbTour<TOURMAX && j1.nbPV>0 && j2.nbPV >0)
-    while (nbTour<=TOURMAX){            //manque la seconde condition
+//Boucle de jeu
+    while (nbTour<=TOURMAX || ((b1.getPointVie() > 0) && b2.getPointVie() > 0)){
 
 
 //Chaque joueur recoit 8 Pièces d'or
@@ -147,7 +147,7 @@ int main (int argc, char *argv[]){
 
 
 //PERIODE D'ACHATS J1
-        cout << "\n\n\n\n\t Joueur 1"<<  " \n"<< endl;
+        cout << "\n\n\n\t Joueur 1"<<  " \n"<< endl;
         bool a = menu(j1);
 
 		if (a) {
@@ -167,7 +167,7 @@ int main (int argc, char *argv[]){
 		}
 
 //PERIODE D'ACHATS J2
-        cout << "\n\n\n\n\t Joueur 2"<<  " \n"<< endl;
+        cout << "\n\n\n\t Joueur 2"<<  " \n"<< endl;
         bool b = menu(j2);
 
         if (b) {
@@ -189,25 +189,24 @@ int main (int argc, char *argv[]){
         plateau.affiche();
 
         vector<Pion*> j1Equipe = j1.getListeEquipe(), j2Equipe = j2.getListeEquipe();
-
-        j1.action1(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 1 | JOUEUR 1" << endl;
-        j2.action1(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        j1.action1(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 1 | JOUEUR 2" << endl;
+        j2.action1(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
 
         plateau.affiche();
 
-        j1.action2(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 2 | JOUEUR 1" << endl;
-        j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        j1.action2(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 2 | JOUEUR 2" << endl;
+        j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
 
         plateau.affiche();
 
-        j1.action3(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 3 | JOUEUR 1" << endl;
-        j2.action3(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        j1.action3(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
         cout << "ACTION 3 | JOUEUR 2" << endl;
+        j2.action3(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
 
         plateau.affiche();
 
