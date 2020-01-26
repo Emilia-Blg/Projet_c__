@@ -48,7 +48,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     plateau.viderCase(p->getPos());
                     ennemi.erase(it);
 
-                    allie.erase(allie.end());
+                    allie.erase(allie.begin());
                     allie.push_back(new SuperSoldat(*this));
                     if(p->getNom() == "F"){
                         res = 1;
@@ -59,9 +59,6 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     if(p->getNom() == "C"){
                         res = 3;
                     }
-                    cout<<"suppresion fantassin en case "<<(*it.base())->getPos()<<endl;
-                    plateau.viderCase((*it.base())->getPos());
-                    ennemi.erase(it);
                 }
                 atq=true;
             }
