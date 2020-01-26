@@ -145,6 +145,7 @@ int Fantassin::action3(vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool dro
         this->action1(allie, ennemi, droite, B, plateau);
     }
     atq == false;
+    return 0;
 }
 
 
