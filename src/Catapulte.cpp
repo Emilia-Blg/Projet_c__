@@ -242,7 +242,7 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 cout << "test7" << endl;
 
                 //plateau.placer(reinterpret_cast<Unite &>(allie[i]), this->getPos());
-                plateau.setTab(reinterpret_cast<Unite &>(allie[i]), this->getPos());
+                plateau.placer(*(allie[i]), this->getPos());
                 cout << "test8" << endl;
 
 
@@ -274,7 +274,7 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 this->setPos(this->getPos()+1);
                 cout << "test77" << endl;
 
-                plateau.setTab(reinterpret_cast<Unite &>(allie[i]), this->getPos());
+                plateau.placer(*(allie[i]), this->getPos());
                 cout << "test88" << endl;
 
                 plateau.viderCase(allie[i]->getPos()+1);

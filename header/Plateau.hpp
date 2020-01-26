@@ -18,7 +18,6 @@ public:
     bool placer(Unite& u, int position);
     Unite getTab(int index);
     vector<Unite*> getPlateau();
-    void setTab(Unite u, int index);
     void viderCase(int index);
     void affiche();
 };
