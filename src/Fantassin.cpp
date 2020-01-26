@@ -109,8 +109,10 @@ void Fantassin::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 this->setPos(this->getPos()+1);
                 cout << "test7" << endl;
 
-                plateau.placer(reinterpret_cast<Unite &>(allie[i]), this->getPos());
+                //plateau.placer(reinterpret_cast<Unite &>(allie[i]), this->getPos());
+                plateau.setTab(reinterpret_cast<Unite &>(allie[i]), this->getPos());
                 cout << "test8" << endl;
+
 
                 plateau.viderCase(this->getPos()-1);
                 cout << "test9" << endl;
@@ -140,7 +142,7 @@ void Fantassin::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
                 this->setPos(this->getPos()+1);
                 cout << "test77" << endl;
 
-                plateau.placer(reinterpret_cast<Unite &>(allie[i]), this->getPos());
+                plateau.setTab(reinterpret_cast<Unite &>(allie[i]), this->getPos());
                 cout << "test88" << endl;
 
                 plateau.viderCase(allie[i]->getPos()+1);

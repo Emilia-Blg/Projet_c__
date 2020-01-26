@@ -13,6 +13,8 @@
 #include <algorithm>
 
 
+//TODO problème remplissage de mon plateau et de ma listeEquipe
+
 
 //TODO dans joueur : les fonctions action prennent en paramètre mon plateau
 // + dettecter le pion le plus avancer pour le faire jouer en premier puis décrémente/incrémente
@@ -67,7 +69,7 @@ vector<Pion*> TriLoin(vector<Pion*> listEquip){
 //choix des pions que le joueur souhaite acheter
 bool menu(Joueur &j){
     bool b;
-    cout << "Quel pion souhaitez-vous acheter ? \n\t0 : fantassin \n\t1 : archer \n\t2 : catapulte  \n\t3 : Rien" <<  endl;
+    cout << "Quel pion souhaitez-vous acheter ? \n\t0 : fantassin (10 pieces) \t1 : archer (12 pieces) \t2 : catapulte (22 pieces) \t3 : Rien" <<  endl;
     cout << "PIECES DISPONIBLES : " << j.getPO()<<endl;
     cin >> i;
 
@@ -337,15 +339,15 @@ int main (int argc, char *argv[]){
         nbTour+=1;
     }
 
-    if((b1.getPointVie() == 0) && (TOURMAX != 0)){
+    if((b1.getPointVie() == 0) && (nbTour != TOURMAX)){
         cout << " JOUEUR 2 À GAGNER !!!! " << endl;
     }
 
-    if((b2.getPointVie() == 0) && (TOURMAX != 0)){
+    if((b2.getPointVie() == 0) && (nbTour != TOURMAX)){
         cout << " JOUEUR 1 À GAGNER !!!! " << endl;
     }
 
-    if(TOURMAX == 0){
+    if(nbTour == TOURMAX){
         cout << " EGALITE " << endl;
     }
 

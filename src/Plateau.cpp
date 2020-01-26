@@ -40,6 +40,15 @@ Unite Plateau::getTab(int index){
     return *tab[index];
 }
 
+void Plateau::setTab(Unite u, int index){
+    tab[index] = &u;
+}
+
+vector<Unite*> Plateau::getPlateau(){
+    return tab;
+}
+
+
 void Plateau::affiche(){
     cout<<endl<<"---------------------------------------------------------"<<endl<<"Plateau"<<endl;
     cout<<"Base A |";
