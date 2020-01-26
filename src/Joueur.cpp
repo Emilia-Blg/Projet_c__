@@ -19,10 +19,6 @@ Joueur::Joueur(){
 Joueur::~Joueur(){}
 
 
-void Joueur::setPV(int ppv){
-    pv=ppv;
-}
-
 void Joueur::setPO(int ppo){
     po=ppo;
 }
@@ -51,10 +47,6 @@ void Joueur::setListeEquipe(vector<Pion*> liste){
     listeEquipe=liste;
 }
 
-int Joueur::getPV(){
-    return pv;
-}
-
 //ajoute un pointeur de pion en fin de liste
 void Joueur::add(Pion *p){
     listeEquipe.push_back(p);
@@ -78,7 +70,11 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
 
         if (droite) { //alors camp allié : par défaut à gauche
             for (int i = 0; i <allie.size(); i++) {
-                a = allie[i]->action1(allie, ennemi, true,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
+                a = allie[i]->action1(allie, ennemi, droite,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
+
+                cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
+
+
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
                     cout << "\t\tFantassin énnemie tué !\n\t +5 Pieces d'Or :  " << this->getPO() << endl;
@@ -121,7 +117,11 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
             }
         } else {
             for (int i = 0; i < allie.size(); i++) {
-                a = allie[i]->action1(allie, ennemi, false,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
+                a = allie[i]->action1(allie, ennemi, droite,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
+
+                cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
+
+
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
                     cout << "\t\tFantassin énnemie tué !\n +5 Pieces d'Or :  " << this->getPO() << endl;
@@ -169,8 +169,10 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
 
 
 void Joueur::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
-    for(int l=0; l<allie.size(); l++){
-        allie[l]->action2(allie,ennemi,droite,B,plateau);
+    if(allie.size() != 0){
+        for(int l=0; l<allie.size(); l++){
+            allie[l]->action2(allie,ennemi,droite,B,plateau);
+        }
     }
 }
 

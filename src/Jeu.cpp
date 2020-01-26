@@ -111,12 +111,10 @@ int main (int argc, char *argv[]){
 
 //Création des 2 joueurs j1 et j2
     Joueur j1;
-    j1.setPV(100);
     j1.setPO(0);
     j1.setBool(true);
 
     Joueur j2;
-    j2.setPV(100);
     j2.setPO(0);
     j2.setBool(false);
 
@@ -125,7 +123,10 @@ int main (int argc, char *argv[]){
 
 //Création des bases t0
     Base b1;
+    b1.setPointVie(100);
     Base b2;
+    b2.setPointVie(100);
+
 
 //placer les unités by Emilia
      b1.setPos(0);
@@ -187,25 +188,29 @@ int main (int argc, char *argv[]){
         }
 
         plateau.affiche();
+        cout<<"BASE A : "<<b1.getPointVie()<<" vie "<<endl;
+        cout<<"BASE B : "<<b2.getPointVie()<<" vie "<<endl;
+
+
 
         vector<Pion*> j1Equipe = j1.getListeEquipe(), j2Equipe = j2.getListeEquipe();
         cout << "ACTION 1 | JOUEUR 1" << endl;
-        j1.action1(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
+        j1.action1(j1Equipe, j2Equipe, j1.getBool(), b2, plateau);
         cout << "ACTION 1 | JOUEUR 2" << endl;
-        j2.action1(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        j2.action1(j2Equipe, j1Equipe, j2.getBool(), b1, plateau);
 
         plateau.affiche();
 
         cout << "ACTION 2 | JOUEUR 1" << endl;
-        j1.action2(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
-        
+        j1.action2(j1Equipe, j2Equipe, j1.getBool(), b2, plateau);
+
         for(int i=0; i<j1.getListeEquipe().size(); i++){
             cout<< j1.getPion(i)->getNom() <<"      "<<j1.getPion(i)->getPos();
             cout<<""<<endl;
         }
 
         cout << "ACTION 2 | JOUEUR 2" << endl;
-        j2.action2(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        j2.action2(j2Equipe, j1Equipe, j2.getBool(), b1, plateau);
 
         for(int i=0; i<j2.getListeEquipe().size(); i++){
             cout<< j2.getPion(i)->getNom() <<"      "<<j2.getPion(i)->getPos();
@@ -215,11 +220,13 @@ int main (int argc, char *argv[]){
         plateau.affiche();
 
         cout << "ACTION 3 | JOUEUR 1" << endl;
-        j1.action3(j1Equipe, j2Equipe, j1.getBool(), b1, plateau);
+        j1.action3(j1Equipe, j2Equipe, j1.getBool(), b2, plateau);
         cout << "ACTION 3 | JOUEUR 2" << endl;
-        j2.action3(j2Equipe, j1Equipe, j2.getBool(), b2, plateau);
+        j2.action3(j2Equipe, j1Equipe, j2.getBool(), b1, plateau);
 
         plateau.affiche();
+
+
 
 
 /*------------------Quand tout fonctionne----------------------- */
@@ -232,15 +239,11 @@ int main (int argc, char *argv[]){
     }
     //Fin de Boucle
 
-    if((b1.getPointVie() == 0) && (nbTour != TOURMAX)){
+    if((b1.getPointVie() <= 0) && (nbTour != TOURMAX)){
         cout << " JOUEUR 2 À GAGNER !!!! " << endl;
-    }
-
-    if((b2.getPointVie() == 0) && (nbTour != TOURMAX)){
+    }else if((b2.getPointVie() <= 0) && (nbTour != TOURMAX)){
         cout << " JOUEUR 1 À GAGNER !!!! " << endl;
-    }
-
-    if(nbTour == TOURMAX){
+    }else if(nbTour == TOURMAX){
         cout << " EGALITE " << endl;
     }
 
