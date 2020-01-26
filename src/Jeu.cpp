@@ -194,7 +194,7 @@ int main (int argc, char *argv[]){
         cout << "ACTION 1 | JOUEUR 1" << endl;
         j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2);
         cout << "ACTION 1 | JOUEUR 2" << endl;
-        
+
 
         j1.action2(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
         cout << "ACTION 2 | JOUEUR 1" << endl;

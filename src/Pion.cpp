@@ -24,7 +24,6 @@ void Pion::avancer(bool droite){
 int Pion::getPortee(){
     return portee;
 }
-//void Pion::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau plateau){}
 
 
 

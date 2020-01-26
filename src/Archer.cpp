@@ -95,14 +95,8 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
             }
 
             if(this->getPos() != (ennemi.front()->getPos()-1)){
-                cout << "test6" << endl;
-
-                bool b = plateau.placer(*this, this->getPos()+1);
-                cout << "test8" << endl;
-                cout << b<<endl ;
-
+                plateau.placer(*this, this->getPos()+1);
                 plateau.viderCase(this->getPos()-1);
-                cout << "test9" << endl;
             }
         }
     }else {
@@ -111,14 +105,8 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
                 i++;
             }
             if(this->getPos() != (ennemi.front()->getPos()-1)){
-                cout << "test66" << endl;
-
-                bool b = plateau.placer(*this, this->getPos()-1);
-                cout << "test88" << endl;
-                cout<<b<<endl ;
-
+                plateau.placer(*this, this->getPos()-1);
                 plateau.viderCase(allie[i]->getPos()+1);
-                cout << "test99" << endl;
             }
         }
     }
