@@ -229,7 +229,7 @@ int Catapulte::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droit
 
 //ACTION 2 : AVANCE
 void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
-    if(droite){         //cas du joueur 1
+    if(droite == true){         //cas du joueur 1
         for(int i=0; i< allie.size(); i++){
             if(this->getNom() != "C"){          //si la pion est une catapulte on passe a la case suivante
                 i++;
@@ -237,9 +237,9 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
             if(this->getPos() != (ennemi.front()->getPos()-1)){
                 cout << "test6" << endl;
 
-                plateau.placer(*this, this->getPos()+1);
+                bool b = plateau.placer(*this, this->getPos()+1);
                 cout << "test8" << endl;
-                cout << plateau.placer(*this, this->getPos()+1)<<endl ;
+                cout << b<<endl ;
 
 
                 plateau.viderCase(this->getPos()-1);
@@ -254,9 +254,9 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
             if(this->getPos() != (ennemi.front()->getPos()-1)){
                 cout << "test66" << endl;
 
-                plateau.placer(*this, this->getPos()-1);
+                bool b = plateau.placer(*this, this->getPos()-1);
                 cout << "test88" << endl;
-                cout<<plateau.placer(*this, this->getPos()-1)<<endl ;
+                cout<<b<<endl ;
 
 
                 plateau.viderCase(allie[i]->getPos()+1);
@@ -265,6 +265,13 @@ void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite,
         }
     }
 }
+
+
+//ACTION 3 : AVANCE
+void Catapulte::action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B){
+    //avance
+}
+
 
 
 
