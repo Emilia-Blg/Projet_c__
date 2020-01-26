@@ -43,6 +43,7 @@ int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, 
                     if(p->getNom() == "C"){
                         return 3;
                     }
+                    plateau.viderCase((*it.base())->getPos());
                     ennemi.erase(it);
                 }
                 atq=true;
@@ -70,6 +71,7 @@ int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, 
                     if(p->getNom() == "C"){
                         return 3;
                     }
+                    plateau.viderCase((*it.base())->getPos());
                     ennemi.erase(it);
                 }
                 atq=true;
