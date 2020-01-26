@@ -23,7 +23,7 @@ public :
     string getNom();
     string affiche();
     int action1(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B);
-    void action2(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau plateau);
+    void action2(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau);
     void action3(std::vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B);
 };
 #endif
