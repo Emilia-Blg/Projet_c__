@@ -26,8 +26,6 @@ bool Plateau::placer(Unite& u, int index){
     //retourn bool pour dire si ya ou pas
 
     if(tab[index] == nullptr ){
-        cout<<"placement reussi en "<<index<<endl;
-        cout<<"adresse plateau"<<this<<endl;
         tab[index] = &u;
         u.setPos(index);
         return true;
@@ -49,17 +47,6 @@ vector<Unite*> Plateau::getPlateau(){
 
 void Plateau::affiche(){
     cout<<endl<<"---------------------------------------------------------"<<endl<<"Plateau"<<endl;
-    for(int cpt =1; cpt<11; cpt++) {
-        if(tab[cpt] != nullptr) {
-            Pion *p = (Pion *) tab[cpt];
-            cout<<p->affiche();
-        } else
-            cout<<"   ";
-        cout<<"|";
-    }
-    cout<<"adresse pointeur "<<this<<endl;
-    cout<<endl;
-
     cout<<"Base A |";
     string pions = "";
     for(int cpt=1; cpt<11; cpt++) { //Boucle de 1 a 11 pour enlever les bases qui ne sont pas des pions
@@ -75,7 +62,6 @@ void Plateau::affiche(){
 
 //supprime l'élément dans la case i de tab
 void Plateau::viderCase(int index){
-    cout<<"suppression de la case "<<index<<endl;
     tab[index] = nullptr;
 }
 
