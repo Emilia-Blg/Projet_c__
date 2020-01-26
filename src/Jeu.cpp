@@ -139,7 +139,6 @@ int main (int argc, char *argv[]){
 //Boucle de jeu (Tant que nbTour<TOURMAX && j1.nbPV>0 && j2.nbPV >0)
     while (nbTour<=TOURMAX){            //manque la seconde condition
 
-        plateau.affiche();
 
 //Chaque joueur recoit 8 PO
         j1.addPO(8);
@@ -189,11 +188,13 @@ int main (int argc, char *argv[]){
             b =false;
         }
 
-        /**j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1);
+        plateau.affiche();
+
+        j1.action1(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1);
         cout << "ACTION 1 | JOUEUR 1" << endl;
         j2.action1(j2.getListeEquipe(), j1.getListeEquipe(), j2.getBool(), b2);
         cout << "ACTION 1 | JOUEUR 2" << endl;
-        */
+        
 
         j1.action2(j1.getListeEquipe(), j2.getListeEquipe(), j1.getBool(), b1, plateau);
         cout << "ACTION 2 | JOUEUR 1" << endl;
