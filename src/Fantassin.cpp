@@ -37,7 +37,6 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
     if (droite){
         vector<Pion*>::iterator it=ennemi.begin();
         for (Pion* p : ennemi){
-            cout<<"ennemi pointeur "<<p <<" pv = "<< p->getPointVie();
             if (((portee) >= (p->getPos()-posCase))  &&  (!atq)){
                 cout<<"avant attaque du Fallie pv "<< this->getPointVie()<<" Fennemi pv "<<p->getPointVie()<<endl;
                 this->attaque(p);

@@ -72,14 +72,16 @@ Pion* achat(){
     Pion* p = nullptr;
     switch (i){
         case 0 :
-            p = new Fantassin();
+            p =  new Fantassin();
+            break;
 
         case 1 :
             p = new Archer();
+            break;
         default :
             p = new Catapulte();
+            break;
     }
-    cout<<"pv p= "<<p->getPointVie()<<endl;
     return p;
 }
 
@@ -158,7 +160,6 @@ int main (int argc, char *argv[]){
 
 		if (a) {
 			Pion* pionAchete = achat();
-			cout<<"pv F j1 "<<pionAchete->getPointVie()<<endl;
 			pionAchete->setPos(1);
 			j1.add(pionAchete);
 			plateau.placer(*pionAchete,1);
@@ -179,7 +180,6 @@ int main (int argc, char *argv[]){
 
         if (b) {
             Pion* pionAchete = achat();
-            cout<<"pv F j2"<<pionAchete->getPointVie()<<endl;
             pionAchete->setPos(10);
             j2.add(pionAchete);
             plateau.placer(*pionAchete,10);

@@ -15,9 +15,9 @@ class Pion : public Unite {
 protected :
     string nom;
     int prix;
-    int pointVie;
     int pointAttaque;
     int portee;
+    //int pointVie;
     //int posCase;
 
 public :
