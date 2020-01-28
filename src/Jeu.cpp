@@ -166,7 +166,7 @@ int main (int argc, char *argv[]){
         plateau.placer(b2, 11);//Placement de b2
 
 //Boucle de jeu
-        while (nbTour <= TOURMAX || ((b1.getPointVie() > 0) && b2.getPointVie() > 0)) {
+        while (nbTour <= TOURMAX && ((b1.getPointVie() > 0) && b2.getPointVie() > 0)) {
 
 //Chaque joueur recoit 8 Pièces d'or
             j1.addPO(8);
@@ -319,6 +319,7 @@ int main (int argc, char *argv[]){
                     cout << j1.getPion(i)->getNom() << "      " << j1.getPion(i)->getPos();
                     cout << "" << endl;
                 }
+                //cout<<endl<<endl<<" nombre de joueur J1 : "<<
                 a = false;
             }
 

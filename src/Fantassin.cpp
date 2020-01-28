@@ -41,12 +41,10 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
             if(ennemi.size() != 0){
                 vector<Pion*>::iterator it=ennemi.begin();
                 for (Pion* p : ennemi){
-
-                    for(int i=0; i<ennemi.size(); i++){
-                        cout<<ennemi[i]->getNom();
-                    }
-
                     if (((portee) == (p->getPos()-posCase))  &&  (!atq)){
+                        if(ennemi.front() == nullptr){
+                            p++;
+                        }
                         cout<<"J1    AVANT attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                         this->attaque(p);
                         cout<<"J1    APRES attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
@@ -64,12 +62,10 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                                 res = 3;
                             }
 
-                            cout<<"before"<<ennemi.size()<<endl;
+
                             //Pion *pp = ennemi.front();
+                            ennemi.front() = nullptr;
                             ennemi.erase(ennemi.begin());
-                            cout<<"after"<<ennemi.size()<<endl;
-                            //pp = nullptr;
-                            //cout<<"remove"<<endl;
 
 
                             //remplace le fantassin qui a tuer de la liste par un superSoldat
@@ -85,21 +81,24 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     }
                     it++;
                 }
-                if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
+                  if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
                     B.setPointVie(B.getPointVie()-pointAttaque);
                     atq=true;
                 }
             }
-            if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
+            /*  if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
                 B.setPointVie(B.getPointVie()-pointAttaque);
                 atq=true;
-            }
+            }*/
         }
         else{
             if(ennemi.size() != 0){
                 vector<Pion*>::iterator it=ennemi.begin();
                 for (Pion* p : ennemi){
                     if (((portee)==(posCase-p->getPos()))&&(!atq)){
+                        if(ennemi.front() == nullptr){
+                            p++;
+                        }
                         cout<<"J2   AVANT attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                         this->attaque(p);
                         cout<<"J2   APRES attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
@@ -118,9 +117,8 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                             }
 
                             //Pion *pp = ennemi.front();
+                            ennemi.front() = nullptr;
                             ennemi.erase(ennemi.begin());
-                            //pp = nullptr;
-                            //cout<<"remove"<<endl;
 
 
                             allie[0] = (Pion*)(new SuperSoldat(*this));
@@ -135,15 +133,15 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                     }
                     it++;
                 }
-                if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
+                  if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
                     B.setPointVie(B.getPointVie()-pointAttaque);
                     atq=true;
                 }
             }
-            if ((ennemi.empty())&&(posCase-portee == 0)&&!atq){
+            /*  if ((ennemi.empty())&&(posCase+portee == 12)&&!atq){
                 B.setPointVie(B.getPointVie()-pointAttaque);
                 atq=true;
-            }
+            }*/
         }
     }
     cout<<endl;
