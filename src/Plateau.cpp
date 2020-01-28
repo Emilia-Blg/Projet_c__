@@ -53,16 +53,8 @@ void Plateau::affiche(){
         pions += "|";
     }
     cout<<pions<<" Base B"<<endl<<"---------------------------------------------------------"<<endl<<endl;
-    /*pions = "";
-    int pions2;
-    for(int cpt=1; cpt<11; cpt++) { //Boucle de 1 a 11 pour enlever les bases qui ne sont pas des pions
-        if(tab[cpt] != nullptr) {
-            Pion *p = (Pion *) tab[cpt];
-            cout<<p->getPointVie()<<"   ";
-        }
-    }*/
-
 }
+
 
 //supprime l'élément dans la case i de tab
 void Plateau::viderCase(int index){

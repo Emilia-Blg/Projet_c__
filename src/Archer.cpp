@@ -24,70 +24,73 @@ string Archer::getNom(){
     return nom;
 }
 
+//ACTION 2 : ATTAQUE
 int Archer::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau) {
     int res =0;
-    if (droite){
-        if(ennemi.size() != 0){
-            vector<Pion*>::iterator it=ennemi.begin();
-            for (Pion* p : ennemi){
-                if (    ((portee)>=(p->getPos()-posCase))  &&  (!atq)    ){       //si position ennemie + proche - position actuel <= 3 alors attaque
-                    this->attaque(p);
-                    if (p->getPointVie()<=0){
-                        cout<<"Pion tué par un archer"<<endl;
-                        plateau.viderCase(p->getPos());
-                        ennemi.erase(it);
-                        if(p->getNom() == "F"){
-                            res = 1;
+    if(allie.size() != 0){
+        if (droite){
+            if(ennemi.size() != 0){
+                vector<Pion*>::iterator it=ennemi.begin();
+                for (Pion* p : ennemi){
+                    if (    ((portee)>=(p->getPos()-posCase))  &&  (!atq)    ){       //si position ennemie + proche - position actuel <= 3 alors attaque
+                        this->attaque(p);
+                        if (p->getPointVie()<=0){
+                            cout<<"Pion tué par un archer"<<endl;
+                            plateau.viderCase(p->getPos());
+                            ennemi.erase(it);
+                            if(p->getNom() == "F"){
+                                res = 1;
+                            }
+                            if(p->getNom() == "A"){
+                                res = 2;
+                            }
+                            if(p->getNom() == "C"){
+                                res = 3;
+                            }
+                            //plateau.viderCase((*it.base())->getPos());
+                            //ennemi.erase(it);
                         }
-                        if(p->getNom() == "A"){
-                            res = 2;
-                        }
-                        if(p->getNom() == "C"){
-                            res = 3;
-                        }
-                        //plateau.viderCase((*it.base())->getPos());
-                        //ennemi.erase(it);
+                        atq=true;
                     }
-                    atq=true;
+                    it++;
                 }
-                it++;
+            }
+            if (  (ennemi.empty())  &&  ((posCase+portee) >= 12)  &&  !atq){
+                B.setPointVie(B.getPointVie()-pointAttaque);
+                atq=true;
             }
         }
-        if (  (ennemi.empty())  &&  ((posCase+portee) >= 12)  &&  !atq){
-            B.setPointVie(B.getPointVie()-pointAttaque);
-            atq=true;
-        }
-    }
-    else{
-        if(ennemi.size() != 0){
-            vector<Pion*>::iterator it=ennemi.begin();
-            for (Pion* p : ennemi){
-                if (  ((portee) >= (posCase-p->getPos() ))  &&  (!atq)){
-                    this->attaque(p);
-                    if (p->getPointVie()<=0){
-                        cout<<"Pion tué par un archer"<<endl;
-                        plateau.viderCase(p->getPos());
-                        ennemi.erase(it);
-                        if(p->getNom() == "F"){
-                            res = 1;
+        else{
+            if(ennemi.size() != 0){
+                vector<Pion*>::iterator it=ennemi.begin();
+                for (Pion* p : ennemi){
+                    if (  ((portee) >= (posCase-p->getPos() ))  &&  (!atq)){
+                        this->attaque(p);
+                        if (p->getPointVie()<=0){
+                            cout<<"Pion tué par un archer"<<endl;
+                            plateau.viderCase(p->getPos());
+                            ennemi.erase(it);
+                            if(p->getNom() == "F"){
+                                res = 1;
+                            }
+                            if(p->getNom() == "A"){
+                                res = 2;
+                            }
+                            if(p->getNom() == "C"){
+                                res = 3;
+                            }
+                            //plateau.viderCase((*it.base())->getPos());
+                            //ennemi.erase(it);
                         }
-                        if(p->getNom() == "A"){
-                            res = 2;
-                        }
-                        if(p->getNom() == "C"){
-                            res = 3;
-                        }
-                        //plateau.viderCase((*it.base())->getPos());
-                        //ennemi.erase(it);
+                        atq=true;
                     }
-                    atq=true;
+                    it++;
                 }
-                it++;
             }
-        }
-        if ( (ennemi.empty()) && ((posCase-portee) <= 0) && !atq){
-            B.setPointVie(B.getPointVie()-pointAttaque);
-            atq=true;
+            if ( (ennemi.empty()) && ((posCase-portee) <= 0) && !atq){
+                B.setPointVie(B.getPointVie()-pointAttaque);
+                atq=true;
+            }
         }
     }
     return res;
@@ -134,6 +137,7 @@ void Archer::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Ba
     }
 }
 
+//ACTION 3 : RIEN
 int Archer::action3(vector<Pion*> &allie, vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     atq = false;
     return 0;

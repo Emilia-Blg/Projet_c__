@@ -20,5 +20,5 @@ public:
     vector<Unite*> getPlateau();
     void viderCase(int index);
     void affiche();
-};
+    };
 #endif

@@ -23,243 +23,246 @@ string Catapulte::getNom(){
     return nom;
 }
 
+
+//ACTION 1 : ATTAQUE
 int Catapulte::action1(vector<Pion *> &allie, vector<Pion *> &ennemi, bool droite, Base &B, Plateau &plateau){
-    if (droite) {
-        if (ennemi.size() != 0) {
-            vector<Pion *>::iterator it = ennemi.begin();
-            for (Pion *p : ennemi) {
-                if (((p->getPos() - posCase) == 2) && (!atq)) {
-                    if ((p++)->getPos() == 3) {                                       //pion dans la case d'a coté
-                        this->attaque(p);
-                        this->attaque(p++);
-                        if ((p->getPointVie() <= 0) && ((p++)->getPointVie() <= 0)) {
-                            cout << "Pion tué par une catapulte" << endl;
-                            plateau.viderCase(p->getPos());
-                            plateau.viderCase((p++)->getPos());
-                            ennemi.erase(it);
-                            ennemi.erase(it++);
-                            if ((p->getNom() == "F") && ((p++)->getNom() == "F")) {
-                                return 4;
+    if(allie.size() != 0){
+        if (droite) {
+            if (ennemi.size() != 0) {
+                vector<Pion *>::iterator it = ennemi.begin();
+                for (Pion *p : ennemi) {
+                    if (((p->getPos() - posCase) == 2) && (!atq)) {
+                        if ((p++)->getPos() == 3) {                                       //pion dans la case d'a coté
+                            this->attaque(p);
+                            this->attaque(p++);
+                            if ((p->getPointVie() <= 0) && ((p++)->getPointVie() <= 0)) {
+                                cout << "Pion tué par une catapulte" << endl;
+                                plateau.viderCase(p->getPos());
+                                plateau.viderCase((p++)->getPos());
+                                ennemi.erase(it);
+                                ennemi.erase(it++);
+                                if ((p->getNom() == "F") && ((p++)->getNom() == "F")) {
+                                    return 4;
+                                }
+                                if ((p->getNom() == "A") && ((p++)->getNom() == "A")) {
+                                    return 5;
+                                }
+                                if ((p->getNom() == "C") && ((p++)->getNom() == "C")) {
+                                    return 6;
+                                }
+                                if (((p->getNom() == "A") && ((p++)->getNom() == "F")) ||
+                                    (((p++)->getNom() == "A") && (p->getNom() == "F"))) {
+                                    return 7;
+                                }
+                                if (((p->getNom() == "A") && ((p++)->getNom() == "C")) ||
+                                    (((p++)->getNom() == "A") && (p->getNom() == "C"))) {
+                                    return 8;
+                                }
+                                if (((p->getNom() == "F") && ((p++)->getNom() == "C")) ||
+                                    (((p++)->getNom() == "F") && (p->getNom() == "C"))) {
+                                    return 9;
+                                }
                             }
-                            if ((p->getNom() == "A") && ((p++)->getNom() == "A")) {
-                                return 5;
-                            }
-                            if ((p->getNom() == "C") && ((p++)->getNom() == "C")) {
-                                return 6;
-                            }
-                            if (((p->getNom() == "A") && ((p++)->getNom() == "F")) ||
-                                (((p++)->getNom() == "A") && (p->getNom() == "F"))) {
-                                return 7;
-                            }
-                            if (((p->getNom() == "A") && ((p++)->getNom() == "C")) ||
-                                (((p++)->getNom() == "A") && (p->getNom() == "C"))) {
-                                return 8;
-                            }
-                            if (((p->getNom() == "F") && ((p++)->getNom() == "C")) ||
-                                (((p++)->getNom() == "F") && (p->getNom() == "C"))) {
-                                return 9;
+                            //plateau.viderCase((*it.base())->getPos());
+                            //ennemi.erase(it); //todo : Voir pour changer le deuxieme it
+                            //ennemi.erase(it++);
+                        } else {
+                            this->attaque(p);
+                            if (p->getPointVie() <= 0) {
+                                cout << "Pion tué par une catapulte" << endl;
+                                plateau.viderCase(p->getPos());
+                                ennemi.erase(it);
+                                if (p->getNom() == "F") {
+                                    return 1;
+                                }
+                                if (p->getNom() == "A") {
+                                    return 2;
+                                }
+                                if (p->getNom() == "C") {
+                                    return 3;
+                                }
+                                //ennemi.erase(it);
                             }
                         }
-                        //plateau.viderCase((*it.base())->getPos());
-                        //ennemi.erase(it); //todo : Voir pour changer le deuxieme it
-                        //ennemi.erase(it++);
-                    } else {
-                        this->attaque(p);
-                        if (p->getPointVie() <= 0) {
-                            cout << "Pion tué par une catapulte" << endl;
-                            plateau.viderCase(p->getPos());
-                            ennemi.erase(it);
-                            if (p->getNom() == "F") {
-                                return 1;
-                            }
-                            if (p->getNom() == "A") {
-                                return 2;
-                            }
-                            if (p->getNom() == "C") {
-                                return 3;
+                    } else if (((p->getPos() - posCase) >= 2) && ((p->getPos() - posCase) <= 4) && (!atq)) {
+                        if ((p++)->getPos() == 4) {
+                            this->attaque(p);
+                            this->attaque(p++);
+                            if ((p->getPointVie() <= 0) && ((p++)->getPointVie() <= 0)) {
+                                cout << "Pion tué par une catapulte" << endl;
+                                plateau.viderCase(p->getPos());
+                                plateau.viderCase((p++)->getPos());
+                                ennemi.erase(it);
+                                ennemi.erase(it++);
+                                if ((p->getNom() == "F") && ((p++)->getNom() == "F")) {
+                                    return 4;
+                                }
+                                if ((p->getNom() == "A") && ((p++)->getNom() == "A")) {
+                                    return 5;
+                                }
+                                if ((p->getNom() == "C") && ((p++)->getNom() == "C")) {
+                                    return 6;
+                                }
+                                if (((p->getNom() == "A") && ((p++)->getNom() == "F")) ||
+                                    (((p++)->getNom() == "A") && (p->getNom() == "F"))) {
+                                    return 7;
+                                }
+                                if (((p->getNom() == "A") && ((p++)->getNom() == "C")) ||
+                                    (((p++)->getNom() == "A") && (p->getNom() == "C"))) {
+                                    return 8;
+                                }
+                                if (((p->getNom() == "F") && ((p++)->getNom() == "C")) ||
+                                    (((p++)->getNom() == "F") && (p->getNom() == "C"))) {
+                                    return 9;
+                                }
                             }
                             //ennemi.erase(it);
+                            //ennemi.erase(it++);
+                        } else {
+                            this->attaque(p);
+                            if (p->getPointVie() <= 0) {
+                                cout << "Pion tué par une catapulte" << endl;
+                                plateau.viderCase(p->getPos());
+                                ennemi.erase(it);
+                                if (p->getNom() == "F") {
+                                    return 1;
+                                }
+                                if (p->getNom() == "A") {
+                                    return 2;
+                                }
+                                if (p->getNom() == "C") {
+                                    return 3;
+                                }
+                                //ennemi.erase(it);
+                            }
                         }
                     }
-                } else if (((p->getPos() - posCase) >= 2) && ((p->getPos() - posCase) <= 4) && (!atq)) {
-                    if ((p++)->getPos() == 4) {
-                        this->attaque(p);
-                        this->attaque(p++);
-                        if ((p->getPointVie() <= 0) && ((p++)->getPointVie() <= 0)) {
-                            cout << "Pion tué par une catapulte" << endl;
-                            plateau.viderCase(p->getPos());
-                            plateau.viderCase((p++)->getPos());
-                            ennemi.erase(it);
-                            ennemi.erase(it++);
-                            if ((p->getNom() == "F") && ((p++)->getNom() == "F")) {
-                                return 4;
-                            }
-                            if ((p->getNom() == "A") && ((p++)->getNom() == "A")) {
-                                return 5;
-                            }
-                            if ((p->getNom() == "C") && ((p++)->getNom() == "C")) {
-                                return 6;
-                            }
-                            if (((p->getNom() == "A") && ((p++)->getNom() == "F")) ||
-                                (((p++)->getNom() == "A") && (p->getNom() == "F"))) {
-                                return 7;
-                            }
-                            if (((p->getNom() == "A") && ((p++)->getNom() == "C")) ||
-                                (((p++)->getNom() == "A") && (p->getNom() == "C"))) {
-                                return 8;
-                            }
-                            if (((p->getNom() == "F") && ((p++)->getNom() == "C")) ||
-                                (((p++)->getNom() == "F") && (p->getNom() == "C"))) {
-                                return 9;
-                            }
-                        }
-                        //ennemi.erase(it);
-                        //ennemi.erase(it++);
-                    } else {
-                        this->attaque(p);
-                        if (p->getPointVie() <= 0) {
-                            cout << "Pion tué par une catapulte" << endl;
-                            plateau.viderCase(p->getPos());
-                            ennemi.erase(it);
-                            if (p->getNom() == "F") {
-                                return 1;
-                            }
-                            if (p->getNom() == "A") {
-                                return 2;
-                            }
-                            if (p->getNom() == "C") {
-                                return 3;
-                            }
-                            //ennemi.erase(it);
-                        }
-                    }
+                    atq = true;
+                    it++;
                 }
+            }
+            if ((ennemi.empty()) && (posCase != 10) && ((posCase + portee) >= 12) && !atq) {
+                B.setPointVie(B.getPointVie() - pointAttaque);
                 atq = true;
-                it++;
             }
-        }
-        if ((ennemi.empty()) && (posCase != 10) && ((posCase + portee) >= 12) && !atq) {
-            B.setPointVie(B.getPointVie() - pointAttaque);
-            atq = true;
-        }
-    }else
-    {
-        if(ennemi.size() != 0){
-            vector<Pion*>::iterator it=ennemi.begin();
-            for (Pion* p : ennemi){
-                if(  ((posCase-p->getPos()) == 2)  && (!atq) ){
-                    if((p--)->getPos() == 3){                                       //pion dans la case d'a coté
-                        this->attaque(p);
-                        this->attaque(p--);
-                        if ((p->getPointVie()<=0) && ((p--)->getPointVie()<=0)){
-                            cout<<"Pion tué par une catapulte"<<endl;
-                            plateau.viderCase(p->getPos());
-                            plateau.viderCase((p--)->getPos());
-                            ennemi.erase(it);
-                            ennemi.erase(it--);
-                            if((p->getNom() == "F") && ((p--)->getNom() == "F")){
-                                return 4;
-                            }
-                            if((p->getNom() == "A") && ((p--)->getNom() == "A")){
-                                return 5;
-                            }
-                            if((p->getNom() == "C") && ((p--)->getNom() == "C")){
-                                return 6;
-                            }
-                            if(  ((p->getNom() == "A") && ((p--)->getNom() == "F"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "F")) ){
-                                return 7;
-                            }
-                            if(  ((p->getNom() == "A") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "C")) ){
-                                return 8;
-                            }
-                            if(  ((p->getNom() == "F") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "F") && (p->getNom() == "C")) ){
-                                return 9;
-                            }
-                        }
-                        //ennemi.erase(it);
-                        //ennemi.erase(it--);
-                    }else{
-                        this->attaque(p);
-                        if (p->getPointVie()<=0){
-                            cout<<"Pion tué par une catapulte"<<endl;
-                            plateau.viderCase(p->getPos());
-                            ennemi.erase(it);
-                            if(p->getNom() == "F"){
-                                return 1;
-                            }
-                            if(p->getNom() == "A"){
-                                return 2;
-                            }
-                            if(p->getNom() == "C"){
-                                return 3;
+        }else{
+            if(ennemi.size() != 0){
+                vector<Pion*>::iterator it=ennemi.begin();
+                for (Pion* p : ennemi){
+                    if(  ((posCase-p->getPos()) == 2)  && (!atq) ){
+                        if((p--)->getPos() == 3){                                       //pion dans la case d'a coté
+                            this->attaque(p);
+                            this->attaque(p--);
+                            if ((p->getPointVie()<=0) && ((p--)->getPointVie()<=0)){
+                                cout<<"Pion tué par une catapulte"<<endl;
+                                plateau.viderCase(p->getPos());
+                                plateau.viderCase((p--)->getPos());
+                                ennemi.erase(it);
+                                ennemi.erase(it--);
+                                if((p->getNom() == "F") && ((p--)->getNom() == "F")){
+                                    return 4;
+                                }
+                                if((p->getNom() == "A") && ((p--)->getNom() == "A")){
+                                    return 5;
+                                }
+                                if((p->getNom() == "C") && ((p--)->getNom() == "C")){
+                                    return 6;
+                                }
+                                if(  ((p->getNom() == "A") && ((p--)->getNom() == "F"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "F")) ){
+                                    return 7;
+                                }
+                                if(  ((p->getNom() == "A") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "C")) ){
+                                    return 8;
+                                }
+                                if(  ((p->getNom() == "F") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "F") && (p->getNom() == "C")) ){
+                                    return 9;
+                                }
                             }
                             //ennemi.erase(it);
-                        }
-                    }
-                }else if(  ((posCase-p->getPos()) >= 2) && ((posCase-p->getPos()) <= 4) &&  (!atq)  ){
-                    if((p++)->getPos() == 4){
-                        this->attaque(p);
-                        this->attaque(p--);
-                        if ((p->getPointVie()<=0) && ((p--)->getPointVie()<=0)){
-                            cout<<"Pion tué par une catapulte"<<endl;
-                            plateau.viderCase(p->getPos());
-                            plateau.viderCase((p--)->getPos());
-                            ennemi.erase(it);
-                            ennemi.erase(it--);
-                            if((p->getNom() == "F") && ((p--)->getNom() == "F")){
-                                return 4;
-                            }
-                            if((p->getNom() == "A") && ((p--)->getNom() == "A")){
-                                return 5;
-                            }
-                            if((p->getNom() == "C") && ((p--)->getNom() == "C")){
-                                return 6;
-                            }
-                            if(  ((p->getNom() == "A") && ((p--)->getNom() == "F"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "F")) ){
-                                return 7;
-                            }
-                            if(  ((p->getNom() == "A") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "C")) ){
-                                return 8;
-                            }
-                            if(  ((p->getNom() == "F") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "F") && (p->getNom() == "C")) ){
-                                return 9;
+                            //ennemi.erase(it--);
+                        }else{
+                            this->attaque(p);
+                            if (p->getPointVie()<=0){
+                                cout<<"Pion tué par une catapulte"<<endl;
+                                plateau.viderCase(p->getPos());
+                                ennemi.erase(it);
+                                if(p->getNom() == "F"){
+                                    return 1;
+                                }
+                                if(p->getNom() == "A"){
+                                    return 2;
+                                }
+                                if(p->getNom() == "C"){
+                                    return 3;
+                                }
+                                //ennemi.erase(it);
                             }
                         }
-                        //ennemi.erase(it);
-                        //ennemi.erase(it--);
-                    }else{
-                        this->attaque(p);
-                        if (p->getPointVie()<=0){
-                            cout<<"Pion tué par une catapulte"<<endl;
-                            plateau.viderCase(p->getPos());
-                            ennemi.erase(it);
-                            if(p->getNom() == "F"){
-                                return 1;
-                            }
-                            if(p->getNom() == "A"){
-                                return 2;
-                            }
-                            if(p->getNom() == "C"){
-                                return 3;
+                    }else if(  ((posCase-p->getPos()) >= 2) && ((posCase-p->getPos()) <= 4) &&  (!atq)  ){
+                        if((p++)->getPos() == 4){
+                            this->attaque(p);
+                            this->attaque(p--);
+                            if ((p->getPointVie()<=0) && ((p--)->getPointVie()<=0)){
+                                cout<<"Pion tué par une catapulte"<<endl;
+                                plateau.viderCase(p->getPos());
+                                plateau.viderCase((p--)->getPos());
+                                ennemi.erase(it);
+                                ennemi.erase(it--);
+                                if((p->getNom() == "F") && ((p--)->getNom() == "F")){
+                                    return 4;
+                                }
+                                if((p->getNom() == "A") && ((p--)->getNom() == "A")){
+                                    return 5;
+                                }
+                                if((p->getNom() == "C") && ((p--)->getNom() == "C")){
+                                    return 6;
+                                }
+                                if(  ((p->getNom() == "A") && ((p--)->getNom() == "F"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "F")) ){
+                                    return 7;
+                                }
+                                if(  ((p->getNom() == "A") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "A") && (p->getNom() == "C")) ){
+                                    return 8;
+                                }
+                                if(  ((p->getNom() == "F") && ((p--)->getNom() == "C"))  ||   (((p--)->getNom() == "F") && (p->getNom() == "C")) ){
+                                    return 9;
+                                }
                             }
                             //ennemi.erase(it);
+                            //ennemi.erase(it--);
+                        }else{
+                            this->attaque(p);
+                            if (p->getPointVie()<=0){
+                                cout<<"Pion tué par une catapulte"<<endl;
+                                plateau.viderCase(p->getPos());
+                                ennemi.erase(it);
+                                if(p->getNom() == "F"){
+                                    return 1;
+                                }
+                                if(p->getNom() == "A"){
+                                    return 2;
+                                }
+                                if(p->getNom() == "C"){
+                                    return 3;
+                                }
+                                //ennemi.erase(it);
+                            }
                         }
                     }
+                    atq=true;
+                    it++;
                 }
-                atq=true;
-                it++;
             }
-        }
-        if ( (ennemi.empty()) && (posCase != 1)  &&  ((posCase-portee) <= 0) && !atq){
-            B.setPointVie(B.getPointVie()-pointAttaque);
-            atq=true;
+            if ( (ennemi.empty()) && (posCase != 1)  &&  ((posCase-portee) <= 0) && !atq){
+                B.setPointVie(B.getPointVie()-pointAttaque);
+                atq=true;
+            }
         }
     }
     return 0;
 }
 
 
-//ACTION 2 : AVANCE
+//ACTION 2 : RIEN
 void Catapulte::action2(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
 }
 
