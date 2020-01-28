@@ -41,22 +41,18 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
             if(ennemi.size() != 0){
                 vector<Pion*>::iterator it=ennemi.begin();
                 for (Pion* p : ennemi){
+
+                    for(int i=0; i<ennemi.size(); i++){
+                        cout<<ennemi[i]->getNom();
+                    }
+
                     if (((portee) == (p->getPos()-posCase))  &&  (!atq)){
                         cout<<"J1    AVANT attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                         this->attaque(p);
                         cout<<"J1    APRES attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                         if (p->getPointVie()<=0){
                             cout<<"Pion tué par un fantassin"<<endl;
-                            //plateau.viderCase(p->getPos());
-
-                            ennemi.erase(ennemi.begin());
-
-                            //remplace le fantassin qui a tuer de la liste par un superSoldat
-                            allie[0] = (Pion*)(new SuperSoldat(*this));
-
-                            //remplacer sur le plateau fantassin par superSoldat
-                            plateau.viderCase(allie.front()->getPos());
-                            plateau.placer(*allie.front(), allie.front()->getPos());
+                            plateau.viderCase(p->getPos());               //retire du plateau
 
                             if(p->getNom() == "F"){
                                 res = 1;
@@ -67,6 +63,23 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                             if(p->getNom() == "C"){
                                 res = 3;
                             }
+
+                            cout<<"before"<<ennemi.size()<<endl;
+                            //Pion *pp = ennemi.front();
+                            ennemi.erase(ennemi.begin());
+                            cout<<"after"<<ennemi.size()<<endl;
+                            //pp = nullptr;
+                            //cout<<"remove"<<endl;
+
+
+                            //remplace le fantassin qui a tuer de la liste par un superSoldat
+                            allie[0] = (Pion*)(new SuperSoldat(*this));
+
+                            //remplacer sur le plateau fantassin par superSoldat
+                            plateau.viderCase(allie.front()->getPos());
+                            plateau.placer(*allie.front(), allie.front()->getPos());
+                            p++;
+
                         }
                         atq=true;
                     }
@@ -92,14 +105,7 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                         cout<<"J2   APRES attaque du F allie pv "<< this->getPointVie()<<" F ennemi pv "<<p->getPointVie()<<endl;
                         if (p->getPointVie()<=0){
                             cout<<"Pion tue par un fantassin"<<endl;
-                            //plateau.viderCase(p->getPos());
-                            ennemi.erase(ennemi.begin());
-
-                            allie[0] = (Pion*)(new SuperSoldat(*this));
-
-                            //remplacer sur le plateau fantassin par SS
-                            plateau.viderCase(allie.front()->getPos());
-                            plateau.placer(*allie.front(), allie.front()->getPos());
+                            plateau.viderCase(p->getPos());
 
                             if(p->getNom() == "F"){
                                 res = 1;
@@ -110,6 +116,20 @@ int Fantassin::action1(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, 
                             if(p->getNom() == "C"){
                                 res = 3;
                             }
+
+                            //Pion *pp = ennemi.front();
+                            ennemi.erase(ennemi.begin());
+                            //pp = nullptr;
+                            //cout<<"remove"<<endl;
+
+
+                            allie[0] = (Pion*)(new SuperSoldat(*this));
+
+                            //remplacer sur le plateau fantassin par SS
+                            plateau.viderCase(allie.front()->getPos());
+                            plateau.placer(*allie.front(), allie.front()->getPos());
+                            p++;
+
                         }
                         atq=true;
                     }

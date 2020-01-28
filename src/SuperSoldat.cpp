@@ -19,7 +19,7 @@ string SuperSoldat::affiche(){
 //action 1 et 2 de fantassin
 
 //ACTION 3 : ATTAQUER -> attaque TOUJOURS
-int SuperSoldat::action3(vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
+int SuperSoldat::action3(vector<Pion*> &allie,vector<Pion*> &ennemi, bool droite, Base &B, Plateau &plateau){
     if(allie.size() != 0){
         if (droite){
             if(ennemi.size() != 0){
@@ -29,8 +29,7 @@ int SuperSoldat::action3(vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool d
                         this->attaque(p);
                         if (p->getPointVie()<=0){
                             cout<<"Pion tué par un fantassin"<<endl;
-                            //plateau.viderCase(p->getPos());
-                            ennemi.erase(ennemi.begin());
+                            plateau.viderCase(p->getPos());
                             if(p->getNom() == "F"){
                                 return 1;
                             }
@@ -40,6 +39,14 @@ int SuperSoldat::action3(vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool d
                             if(p->getNom() == "C"){
                                 return 3;
                             }
+
+
+                            //Pion *pp = ennemi.front();
+                            ennemi.erase(ennemi.begin());
+                            //pp = nullptr;
+                            //cout<<"remove"<<endl;
+                            //p++;
+
                         }
                     }
                     it++;
@@ -57,8 +64,8 @@ int SuperSoldat::action3(vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool d
                         this->attaque(p);
                         if (p->getPointVie()<=0){
                             cout<<"Pion tué par un fantassin"<<endl;
-                            //plateau.viderCase(p->getPos());
-                            ennemi.erase(ennemi.begin());
+                            plateau.viderCase(p->getPos());
+
                             if(p->getNom() == "F"){
                                 return 1;
                             }
@@ -68,6 +75,13 @@ int SuperSoldat::action3(vector<Pion*> &allie,std::vector<Pion*> &ennemi, bool d
                             if(p->getNom() == "C"){
                                 return 3;
                             }
+
+
+                            //Pion *pp = ennemi.front();
+                            ennemi.erase(ennemi.begin());
+                            //pp = nullptr;
+                            //cout<<"remove"<<endl;
+                            //p++;
                         }
                     }
                     it++;

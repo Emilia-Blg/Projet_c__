@@ -182,10 +182,10 @@ int main (int argc, char *argv[]){
                 plateau.placer(*pionAchete, 1);
                 //affiche liste des pion de J1
                 cout << "\n" << endl;
-                for (int i = 0; i < j1.getListeEquipe().size(); i++) {
+                /** for (int i = 0; i < j1.getListeEquipe().size(); i++) {
                     cout << j1.getPion(i)->getNom() << "      " << j1.getPion(i)->getPos();
                     cout << "" << endl;
-                }
+                }*/
                 a = false;
             }
 
@@ -199,10 +199,10 @@ int main (int argc, char *argv[]){
                 plateau.placer(*pionAchete, 10);
                 //affiche liste des pion de J2
                 cout << "\n" << endl;
-                for (int i = 0; i < j2.getListeEquipe().size(); i++) {
+                /** for (int i = 0; i < j2.getListeEquipe().size(); i++) {
                     cout << j2.getPion(i)->getNom() << "      " << j2.getPion(i)->getPos();
                     cout << "" << endl;
-                }
+                }*/
                 b = false;
             }
 

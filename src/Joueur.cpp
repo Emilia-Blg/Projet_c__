@@ -68,8 +68,6 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                 a = allie[i]->action1(allie, ennemi, droite,B, plateau);  //pour chaque pion va chercher le bon élément et fait l'action associé
 
                 //cout<<"classe joueur | action 1 | element liste : "<< allie[i]->getNom() << "       "<< allie[i]->getPos()<<endl;
-                //TODO
-                // Pk j'arrive a récupérer mes listes modifiés ici mais pas dans ma classe Jeu.cpp ???
 
                 if (a == 1) {
                     this->setPO(this->getPO() + 5); //si tue fantassin
@@ -108,7 +106,7 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                     cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n\t +15 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if(a == 0){
-                    cout<<"Rien fait !"<<endl;
+                    //cout<<"Rien fait !"<<endl;
                 }
             }
         } else {
@@ -155,7 +153,7 @@ void Joueur::action1(vector<Pion *> &allie, vector<Pion*> &ennemi, bool droite, 
                     cout << "\t\t1 Fantassin & 1 Catapulte énnemies tués !\n +15 Pieces d'Or :  " << this->getPO() << endl;
                 }
                 if(a == 0){
-                    cout<<"Rien fait !"<<endl;
+                    //cout<<"Rien fait !"<<endl;
                 }
             }
         }
